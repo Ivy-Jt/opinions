@@ -3,484 +3,148 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>观点汇报页｜认知系统</title>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" defer></script>
+    <title>Judgment Lab｜观点汇报站点</title>
+    <link rel="stylesheet" href="./home.css" />
+    <script src="./home.js" defer></script>
   </head>
   <body>
-    <main class="page">
-      <header class="hero">
-        <div class="hero-copy reveal" data-reveal>
-          <p class="eyebrow">Judgment Brief</p>
-          <div class="hero-kicker">
-            <span>核心判断升级</span>
-            <span>从工具使用到系统竞争</span>
-          </div>
-          <h1>AI 时代真正竞争的，不是人，而是认知系统</h1>
-          <p class="hero-note">
-            这不是一条只讲结论的观点，而是一条可以回溯其形成过程的判断：
-            从“<span class="text-highlight">信任 AI</span>”出发，经过校准、协同、外脑与反馈循环，最终收敛为“<span class="text-highlight">认知系统竞争</span>”。
-          </p>
-          <div class="hero-path">
-            <span>信任</span>
-            <i></i>
-            <span>校准边界</span>
-            <i></i>
-            <span>共同进化</span>
-            <i></i>
-            <span>认知系统</span>
-          </div>
+    <main class="home-page">
+      <section class="home-hero reveal" data-reveal>
+        <nav class="home-nav" aria-label="站点导航">
+          <a class="home-brand" href="./index.html">Judgment Lab</a>
+          <div class="home-nav-note">单页汇报 · 观点展示 · 推导过程</div>
+        </nav>
 
-          <section class="hero-diagram">
-            <div class="diagram-head">
-              <span class="label">认知系统示意图</span>
-              <p>长期优势来自一个持续自我校准的闭环，而不是单次工具调用。</p>
+        <div class="hero-shell">
+          <div class="hero-copy">
+            <p class="eyebrow">View Briefs</p>
+            <h1>把观点结论、推导过程和网络位置，放进同一个汇报入口</h1>
+            <p class="hero-text">
+              这里收录的是从 Obsidian 观点库整理出的单页汇报版本。每一页都不仅展示“我相信什么”，也展示“这个判断是怎么长出来的”。
+            </p>
+
+            <div class="hero-points">
+              <span>摘要卡片</span>
+              <span>推理链路</span>
+              <span>元发现图谱</span>
+              <span>资料来源</span>
             </div>
-            <div class="diagram-shell">
-              <svg viewBox="0 0 680 310" role="img" aria-label="人、AI、外脑、反馈循环再回到人的闭环结构">
-                <defs>
-                  <linearGradient id="loopStroke" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#204c7a" />
-                    <stop offset="100%" stop-color="#5f86b4" />
-                  </linearGradient>
-                  <filter id="softGlow">
-                    <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#204c7a" flood-opacity="0.12" />
-                  </filter>
-                  <marker id="arrowTip" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto">
-                    <path d="M0,0 L10,5 L0,10 z" fill="#3a6798"></path>
-                  </marker>
-                </defs>
 
-                <path
-                  class="loop-path"
-                  d="M115 155 C115 85, 235 48, 340 48 C470 48, 565 108, 565 155 C565 230, 460 268, 340 268 C210 268, 115 228, 115 155"
-                ></path>
-
-                <line class="loop-arrow" x1="176" y1="88" x2="238" y2="65"></line>
-                <line class="loop-arrow" x1="433" y1="64" x2="492" y2="86"></line>
-                <line class="loop-arrow" x1="498" y1="219" x2="440" y2="244"></line>
-                <line class="loop-arrow" x1="244" y1="245" x2="182" y2="220"></line>
-
-                <g class="loop-node" transform="translate(86 117)">
-                  <rect width="118" height="74" rx="24"></rect>
-                  <text x="59" y="34">人</text>
-                  <text x="59" y="53" class="node-sub">判断与提问</text>
-                </g>
-
-                <g class="loop-node" transform="translate(238 34)">
-                  <rect width="118" height="74" rx="24"></rect>
-                  <text x="59" y="34">AI</text>
-                  <text x="59" y="53" class="node-sub">放大与生成</text>
-                </g>
-
-                <g class="loop-node" transform="translate(391 117)">
-                  <rect width="118" height="74" rx="24"></rect>
-                  <text x="59" y="34">外脑</text>
-                  <text x="59" y="53" class="node-sub">知识库与工作流</text>
-                </g>
-
-                <g class="loop-node node-emphasis" transform="translate(238 204)">
-                  <rect width="142" height="74" rx="24"></rect>
-                  <text x="71" y="34">反馈循环</text>
-                  <text x="71" y="53" class="node-sub">复盘 调整 再分工</text>
-                </g>
-              </svg>
-            </div>
-          </section>
-        </div>
-        <aside class="summary-card reveal" data-reveal>
-          <div class="summary-block reveal" data-reveal>
-            <span class="label">一句话结论</span>
-            <p>
-              当人人都能使用 AI 时，真正拉开长期差距的，不再只是个人能力，而是
-              <strong>人 + AI + 外部记忆 + 反馈循环</strong>构成的认知系统。
-            </p>
-          </div>
-
-          <div class="summary-block reveal" data-reveal>
-            <span class="label">三条关键依据</span>
-            <ul>
-              <li>同样使用 AI，有的人把它当搜索工具，有的人能形成持续对话与反馈闭环。</li>
-              <li>单独谈“人与 AI 协同能力”过于局部，无法解释知识库、Agent 与工作流的长期差异。</li>
-              <li>真正成长的对象不是单独的人或 AI，而是两者连同外脑与反馈机制组成的系统。</li>
-            </ul>
-          </div>
-
-          <div class="summary-block reveal" data-reveal>
-            <span class="label">适用边界 / 影响判断</span>
-            <p>
-              这条判断更适用于中长期竞争力、复杂任务和持续学习场景；不适合被简化为“只要会用 AI 就能赢”。
-            </p>
-          </div>
-
-          <div class="summary-block reveal" data-reveal>
-            <span class="label">下一步行动建议</span>
-            <p>
-              从“多用一个工具”升级为“建立一套认知工作流”：固定记录、复盘、反馈与人机分工校准机制。
-            </p>
-          </div>
-
-          <div class="summary-block chart-block reveal" data-reveal>
-            <span class="label">竞争维度升级路径</span>
-            <div class="upgrade-chart" aria-label="竞争维度从工具使用升级到认知系统的路径图">
-              <div class="chart-row">
-                <div class="chart-meta">
-                  <strong>工具使用</strong>
-                  <span>单点提效</span>
-                </div>
-                <div class="chart-bar"><span style="--bar: 28%"></span></div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-meta">
-                  <strong>协同能力</strong>
-                  <span>人与 AI 配合</span>
-                </div>
-                <div class="chart-bar"><span style="--bar: 52%"></span></div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-meta">
-                  <strong>外脑系统</strong>
-                  <span>知识沉淀与复用</span>
-                </div>
-                <div class="chart-bar"><span style="--bar: 74%"></span></div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-meta">
-                  <strong>认知系统</strong>
-                  <span>反馈闭环与持续进化</span>
-                </div>
-                <div class="chart-bar chart-bar-emphasis"><span style="--bar: 100%"></span></div>
-              </div>
+            <div class="hero-public-note">
+              <strong>公开入口说明</strong>
+              <p>这个站点适合直接作为 GitHub Pages 对外分享入口使用。首页负责总览，卡片页负责单条观点的完整讲述。</p>
             </div>
           </div>
-        </aside>
-      </header>
 
-      <section class="section reveal" data-reveal>
-        <div class="section-head">
-          <p class="eyebrow">Process</p>
-          <h2>观点生成过程</h2>
-          <p>
-            这条观点并不是一步到位形成的，而是在对一个更具体的问题不断下钻后，逐层替换旧解释、保留更强解释力的结果。
-          </p>
-        </div>
-
-        <div class="process-board reveal" data-reveal data-process-board>
-          <nav class="process-nav" aria-label="观点生成过程步骤">
-            <button class="process-pill is-active" type="button" data-step="0">
-              <span class="pill-index">01</span>
-              <span class="pill-label">起点现象</span>
-            </button>
-            <button class="process-pill" type="button" data-step="1">
-              <span class="pill-index">02</span>
-              <span class="pill-label">触发问题</span>
-            </button>
-            <button class="process-pill" type="button" data-step="2">
-              <span class="pill-index">03</span>
-              <span class="pill-label">关键例子</span>
-            </button>
-            <button class="process-pill" type="button" data-step="3">
-              <span class="pill-index">04</span>
-              <span class="pill-label">判断逻辑</span>
-            </button>
-            <button class="process-pill" type="button" data-step="4">
-              <span class="pill-index">05</span>
-              <span class="pill-label">观点成型</span>
-            </button>
-            <button class="process-pill" type="button" data-step="5">
-              <span class="pill-index">06</span>
-              <span class="pill-label">可验证方式</span>
-            </button>
-          </nav>
-
-          <div class="process-stage">
-            <article class="stage-panel is-active" data-panel="0">
-              <div class="stage-meta">
-                <span class="stage-index">01</span>
-                <p class="stage-tag">Observation</p>
+          <div class="hero-panel">
+            <div class="panel-label">当前已整理</div>
+            <div class="panel-metric">
+              <strong>2</strong>
+              <span>张成熟观点汇报页</span>
+            </div>
+            <div class="panel-list">
+              <div>
+                <b>V002</b>
+                <p>认知系统竞争</p>
               </div>
-              <div class="stage-copy">
-                <h3>起点现象</h3>
-                <div class="reasoning-chain">
-                  <article class="chain-item">
-                    <span class="chain-label">观察到</span>
-                    <p>同样使用 AI 半年，有的人能力持续抬升，有的人仍停留在一次性提问。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">旧解释</span>
-                    <p>看上去像是“有人更聪明”，所以更会用 AI。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">问题</span>
-                    <p>如果只是智力差异，为什么这种差距会随着时间继续扩大，而不是稳定不变？</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">暂时结论</span>
-                    <p>差异可能不在 AI 本身，而在 AI 被放进了什么样的使用结构里。</p>
-                  </article>
-                </div>
+              <div>
+                <b>V014</b>
+                <p>认知资产生命周期策略</p>
               </div>
-            </article>
-
-            <article class="stage-panel" data-panel="1">
-              <div class="stage-meta">
-                <span class="stage-index">02</span>
-                <p class="stage-tag">Question</p>
-              </div>
-              <div class="stage-copy">
-                <h3>触发问题</h3>
-                <div class="reasoning-chain">
-                  <article class="chain-item">
-                    <span class="chain-label">发现</span>
-                    <p>单纯把差异解释为 Prompt 能力，解释不了长期复利。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">继续追问</span>
-                    <p>到底是什么在累积？是回答质量，还是回答之外的东西？</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">被排除</span>
-                    <p>模型版本、提示词技巧、使用频率，都不足以单独解释这种长期差异。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">推进方向</span>
-                    <p>真正需要找的，是一个会持续积累、持续修正的竞争单位。</p>
-                  </article>
-                </div>
-              </div>
-            </article>
-
-            <article class="stage-panel" data-panel="2">
-              <div class="stage-meta">
-                <span class="stage-index">03</span>
-                <p class="stage-tag">Example</p>
-              </div>
-              <div class="stage-copy">
-                <h3>关键例子</h3>
-                <div class="reasoning-chain">
-                  <article class="chain-item">
-                    <span class="chain-label">案例 A</span>
-                    <p>用完 AI 就结束，答案没有进入记录、复盘和下一轮提问。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">案例 B</span>
-                    <p>回答被记录、被改写、被追问，再进入下一次决策。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">差异显现</span>
-                    <p>前者只有一次性交互，后者开始形成“记录 → 复盘 → 再提问”的连续结构。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <div class="mini-flow">
-                    <span>一次性调用</span>
-                    <span>记录沉淀</span>
-                    <span>复盘修正</span>
-                    <span>再提问</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="stage-panel" data-panel="3">
-              <div class="stage-meta">
-                <span class="stage-index">04</span>
-                <p class="stage-tag">Logic</p>
-              </div>
-              <div class="stage-copy">
-                <h3>判断逻辑</h3>
-                <div class="reasoning-chain">
-                  <article class="chain-item">
-                    <span class="chain-label">修正前提</span>
-                    <p>人与 AI 不是一次协作，而是一种可以重复、校正、重构的循环关系。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">新解释</span>
-                    <p>真正的差异，不在于这次问得多好，而在于这次输出是否被纳入下一轮思考。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <div class="logic-loop">
-                    <span>人</span>
-                    <i></i>
-                    <span>AI</span>
-                    <i></i>
-                    <span>记录</span>
-                    <i></i>
-                    <span>反馈</span>
-                    <i></i>
-                    <span>再次提问</span>
-                  </div>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">逻辑结果</span>
-                    <p>一旦进入循环，竞争的核心就不再是单次能力，而是整套循环是否持续运行。</p>
-                  </article>
-                </div>
-              </div>
-            </article>
-
-            <article class="stage-panel" data-panel="4">
-              <div class="stage-meta">
-                <span class="stage-index">05</span>
-                <p class="stage-tag">Conclusion</p>
-              </div>
-              <div class="stage-copy">
-                <h3>观点成型</h3>
-                <div class="reasoning-chain">
-                  <article class="chain-item">
-                    <span class="chain-label">被放弃</span>
-                    <p>“人与 AI 协同能力”仍然太窄，只解释了一段关系，没有解释沉淀和反馈。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">概念升级</span>
-                    <p>竞争单位从“个人”升级为“人 + AI + 外部记忆 + 反馈机制”的整体。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item chain-item-strong">
-                    <span class="chain-label">最终表达</span>
-                    <p><strong><span class="text-highlight">AI 时代真正竞争的，是认知系统和认知系统。</span></strong></p>
-                  </article>
-                </div>
-              </div>
-            </article>
-
-            <article class="stage-panel" data-panel="5">
-              <div class="stage-meta">
-                <span class="stage-index">06</span>
-                <p class="stage-tag">Validation</p>
-              </div>
-              <div class="stage-copy">
-                <h3>可验证方式</h3>
-                <div class="reasoning-chain">
-                  <article class="chain-item">
-                    <span class="chain-label">未来 90 天观察</span>
-                    <p>不要只看谁问得更快，而要看谁在持续形成可复用的工作结构。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">重点信号</span>
-                    <p>是否存在稳定的记录、反馈、复盘，以及据此再分工的闭环。</p>
-                  </article>
-                  <span class="chain-arrow">↓</span>
-                  <article class="chain-item">
-                    <span class="chain-label">验证标准</span>
-                    <p>如果闭环存在，能力差距会继续扩大；如果没有，优势大多停留在工具熟练度层。</p>
-                  </article>
-                </div>
-              </div>
-            </article>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section split-section reveal" data-reveal>
+      <section class="home-section reveal" data-reveal>
         <div class="section-head">
-          <p class="eyebrow">Support</p>
-          <h2>补充材料</h2>
+          <p class="eyebrow">Views</p>
+          <h2>观点卡片</h2>
+          <p>每张卡片都链接到完整汇报页，适合投屏讲述，也适合直接分享链接查看。</p>
         </div>
 
-        <div class="support-grid">
-          <article class="panel support-panel support-panel-quotes reveal" data-reveal>
-            <h3>核心引文</h3>
-            <div class="quote-stack">
-              <article class="quote-card">
-                <p class="quote-mark">“</p>
-                <p class="quote-text">信任只是进入循环的门票。</p>
-                <p class="quote-note">用于界定：信任是起点，不是最终竞争力。</p>
-              </article>
-              <article class="quote-card">
-                <p class="quote-mark">“</p>
-                <p class="quote-text">真正成长的并不是人，或者 AI，而是人 + AI + 外部记忆 + 反馈循环组成的系统。</p>
-                <p class="quote-note">用于支撑：竞争单位已经从个体升级为系统。</p>
-              </article>
-              <article class="quote-card">
-                <p class="quote-mark">“</p>
-                <p class="quote-text">协同能力只是认知系统的一部分。</p>
-                <p class="quote-note">用于修正：只谈协同，还不足以解释长期差异。</p>
-              </article>
-            </div>
-          </article>
-
-          <article class="panel support-panel support-panel-graph reveal" data-reveal>
-            <h3>元发现图谱</h3>
-            <div class="meta-graph" data-meta-graph>
-              <div class="meta-map-wrap">
-                <div class="meta-map-head">
-                  <span class="label">网络定位</span>
-                  <p>从主题源头进入，经关键转折收敛到当前观点，再延伸出下一步问题。</p>
-                </div>
-                <div class="meta-map" role="group" aria-label="当前观点在观点网络中的位置">
-                  <button class="meta-node" type="button" data-node="source">
-                    <span class="meta-node-index">01</span>
-                    <span class="meta-node-type">主题源头</span>
-                    <strong>AI 时代人的成长问题</strong>
-                  </button>
-                  <i class="meta-link" data-link="source-turn"></i>
-                  <button class="meta-node" type="button" data-node="turn">
-                    <span class="meta-node-index">02</span>
-                    <span class="meta-node-type">关键转折</span>
-                    <strong>信任不是结论</strong>
-                  </button>
-                  <i class="meta-link" data-link="turn-current"></i>
-                  <button class="meta-node is-current" type="button" data-node="current">
-                    <span class="meta-node-index">03</span>
-                    <span class="meta-node-type">当前观点</span>
-                    <strong>竞争单位升级为认知系统</strong>
-                  </button>
-                  <i class="meta-link" data-link="current-extension"></i>
-                  <button class="meta-node" type="button" data-node="extension">
-                    <span class="meta-node-index">04</span>
-                    <span class="meta-node-type">延伸问题</span>
-                    <strong>系统如何形成长期复利</strong>
-                  </button>
-                </div>
+        <div class="cards-grid">
+          <article class="view-card reveal" data-reveal>
+            <div class="view-meta">
+              <span class="view-id">V002</span>
+              <div class="view-tags">
+                <span>AI 时代成长</span>
+                <span>认知系统</span>
               </div>
-
-              <article class="meta-detail meta-detail-card">
-                <span class="label">节点说明</span>
-                <h4 data-meta-title>当前观点</h4>
-                <p data-meta-body>
-                  这条观点并不是孤立判断，而是从“AI 时代人该如何成长”这个大主题里，经由对“信任”“协同”“外脑”“反馈循环”的连续修正后收敛出来的阶段性结论。
-                </p>
-                <div class="meta-detail-tags">
-                  <span data-meta-tag="0">主题归属</span>
-                  <span data-meta-tag="1">概念修正</span>
-                  <span data-meta-tag="2">下一步追问</span>
-                </div>
-              </article>
             </div>
+            <h3>AI 时代真正竞争的，不是人，而是认知系统</h3>
+            <p class="view-summary">
+              当每个人都能使用 AI，长期差距不再只来自个人能力，而来自人、AI、外部记忆和反馈循环组成的认知系统。
+            </p>
+            <ul class="view-points">
+              <li>聚焦竞争单位从“个人”升级为“系统”。</li>
+              <li>完整展示从“信任 AI”到“认知系统”的推导过程。</li>
+              <li>适合讨论长期成长、工作流和复利能力。</li>
+            </ul>
+            <a class="view-link" href="./v002.html">进入汇报页</a>
           </article>
 
-          <article class="panel support-panel support-panel-sources reveal" data-reveal>
-            <h3>资料来源</h3>
-            <div class="source-cards">
-              <article class="source-card">
-                <strong>V002 AI时代真正竞争的，不是人，而是认知系统.md</strong>
-                <p>主观点原文，提供一句话判断、关键背景与被修正后的最终表达。</p>
-              </article>
-              <article class="source-card">
-                <strong>E001 V002 认知系统的完整推导链.md</strong>
-                <p>提供从“信任”到“认知系统”的中间推导与概念升级路径。</p>
-              </article>
-              <article class="source-card">
-                <strong>观点收集工作流.md</strong>
-                <p>补充观点如何被共创、追问、收敛并形成卡片的流程语境。</p>
-              </article>
-              <article class="source-card">
-                <strong>Judgment Lab 观点库.md</strong>
-                <p>提供观点库定位与材料组织方式，支撑整页叙述结构。</p>
-              </article>
+          <article class="view-card reveal" data-reveal>
+            <div class="view-meta">
+              <span class="view-id">V014</span>
+              <div class="view-tags">
+                <span>表达边界</span>
+                <span>生命周期策略</span>
+              </div>
             </div>
+            <h3>未成之事宜保密，未熟之见需碰撞</h3>
+            <p class="view-summary">
+              关键不在“说不说”，而在“说的是什么”。目标、观点、成果分属不同阶段，因此需要保护、碰撞与传播三种不同策略。
+            </p>
+            <ul class="view-points">
+              <li>把认知资产拆成目标、观点、成果三个阶段。</li>
+              <li>强调统一公开或统一保密都会造成系统失效。</li>
+              <li>适合讨论表达策略、协作边界与判断成熟。</li>
+            </ul>
+            <a class="view-link" href="./v014.html">进入汇报页</a>
           </article>
+        </div>
+      </section>
+
+      <section class="home-section reveal" data-reveal>
+        <div class="section-head">
+          <p class="eyebrow">Method</p>
+          <h2>页面组织方式</h2>
+        </div>
+
+        <div class="method-grid">
+          <article class="method-card">
+            <span class="method-step">01</span>
+            <h3>结论层</h3>
+            <p>先把一句话结论、关键依据、边界和行动建议压缩成适合汇报开场的摘要卡片。</p>
+          </article>
+          <article class="method-card">
+            <span class="method-step">02</span>
+            <h3>推导层</h3>
+            <p>再把判断生成过程展开成可点击、可切换的步骤卡，让观众跟着推理链走完整个形成过程。</p>
+          </article>
+          <article class="method-card">
+            <span class="method-step">03</span>
+            <h3>支撑层</h3>
+            <p>最后用核心引文、元发现图谱和资料来源承接证据与网络位置，增强完整性。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="home-section reveal" data-reveal>
+        <div class="site-footnote">
+          <div>
+            <span class="footnote-label">站点说明</span>
+            <p>内容整理自 Obsidian MyOS 中的成熟观点、形成背景、主题与元发现材料。</p>
+          </div>
+          <div>
+            <span class="footnote-label">当前更新时间</span>
+            <p>2026-06-13</p>
+          </div>
+          <div>
+            <span class="footnote-label">当前收录</span>
+            <p>V002 / V014</p>
+          </div>
         </div>
       </section>
     </main>
