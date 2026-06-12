@@ -1,0 +1,25 @@
+<svg width="1200" height="860" viewBox="0 0 1200 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="860" rx="36" fill="#F7FAFD"/>
+  <rect x="54" y="54" width="1092" height="752" rx="28" fill="white" stroke="#D7E1EC"/>
+  <ellipse cx="600" cy="430" rx="380" ry="238" stroke="#6F96BB" stroke-width="10" stroke-dasharray="20 18"/>
+  <path d="M376 238L476 210" stroke="#6F96BB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M468 180L506 222L454 232L468 180Z" fill="#6F96BB"/>
+  <path d="M824 244L916 284" stroke="#6F96BB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M880 254L930 292L870 304L880 254Z" fill="#6F96BB"/>
+  <path d="M840 594L748 632" stroke="#6F96BB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M794 646L736 638L780 594L794 646Z" fill="#6F96BB"/>
+  <path d="M356 586L446 628" stroke="#6F96BB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M408 648L454 634L414 590L408 648Z" fill="#6F96BB"/>
+  <rect x="190" y="336" width="190" height="122" rx="28" fill="#FFFFFF" stroke="#C7D6E6" stroke-width="3"/>
+  <rect x="500" y="184" width="200" height="122" rx="28" fill="#FFFFFF" stroke="#C7D6E6" stroke-width="3"/>
+  <rect x="812" y="336" width="198" height="122" rx="28" fill="#FFFFFF" stroke="#C7D6E6" stroke-width="3"/>
+  <rect x="460" y="562" width="280" height="132" rx="30" fill="#EDF4FB" stroke="#AFC3D8" stroke-width="3"/>
+  <text x="285" y="392" fill="#173A5D" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="48" font-weight="700" text-anchor="middle">人</text>
+  <text x="600" y="240" fill="#173A5D" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="48" font-weight="700" text-anchor="middle">AI</text>
+  <text x="911" y="392" fill="#173A5D" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="48" font-weight="700" text-anchor="middle">外脑</text>
+  <text x="600" y="636" fill="#173A5D" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="52" font-weight="700" text-anchor="middle">反馈循环</text>
+  <text x="285" y="430" fill="#677B92" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="24" font-weight="600" text-anchor="middle">判断与提问</text>
+  <text x="600" y="278" fill="#677B92" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="24" font-weight="600" text-anchor="middle">放大与生成</text>
+  <text x="911" y="430" fill="#677B92" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="24" font-weight="600" text-anchor="middle">知识库与工作流</text>
+  <text x="600" y="676" fill="#677B92" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="24" font-weight="600" text-anchor="middle">复盘 调整 再分工</text>
+</svg>

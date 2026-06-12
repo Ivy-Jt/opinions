@@ -1,0 +1,25 @@
+<svg width="1200" height="860" viewBox="0 0 1200 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="860" rx="36" fill="#F7FAFD"/>
+  <rect x="50" y="50" width="1100" height="760" rx="28" fill="white" stroke="#D7E1EC"/>
+  <rect x="100" y="188" width="202" height="130" rx="26" fill="#FFFFFF" stroke="#C6D5E5" stroke-width="3"/>
+  <rect x="362" y="188" width="202" height="130" rx="26" fill="#FFFFFF" stroke="#C6D5E5" stroke-width="3"/>
+  <rect x="624" y="188" width="202" height="130" rx="26" fill="#FFFFFF" stroke="#C6D5E5" stroke-width="3"/>
+  <rect x="886" y="188" width="214" height="130" rx="26" fill="#EDF4FB" stroke="#AFC3D8" stroke-width="3"/>
+  <path d="M302 252H362" stroke="#6F96BB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M560 252H624" stroke="#6F96BB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M826 252H886" stroke="#6F96BB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M348 224L382 252L348 280V224Z" fill="#6F96BB"/>
+  <path d="M610 224L644 252L610 280V224Z" fill="#6F96BB"/>
+  <path d="M872 224L906 252L872 280V224Z" fill="#6F96BB"/>
+  <path d="M994 318C994 420 850 498 600 498C350 498 206 420 206 318" stroke="#7A9DBE" stroke-width="8" stroke-linecap="round" stroke-dasharray="16 16"/>
+  <path d="M244 332L202 310L246 286L244 332Z" fill="#7A9DBE"/>
+  <rect x="254" y="574" width="692" height="138" rx="28" fill="#F8FBFE" stroke="#D7E1EC"/>
+  <rect x="292" y="614" width="152" height="24" rx="12" fill="#DCE8F6"/>
+  <rect x="292" y="652" width="618" height="20" rx="10" fill="#D8E4EF"/>
+  <text x="201" y="244" fill="#173A5D" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="36" font-weight="700" text-anchor="middle">记录</text>
+  <text x="463" y="244" fill="#173A5D" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="36" font-weight="700" text-anchor="middle">复盘</text>
+  <text x="725" y="244" fill="#173A5D" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="36" font-weight="700" text-anchor="middle">反馈</text>
+  <text x="993" y="244" fill="#173A5D" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="36" font-weight="700" text-anchor="middle">再提问</text>
+  <text x="993" y="286" fill="#677B92" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="22" font-weight="600" text-anchor="middle">进入下一轮决策</text>
+  <text x="600" y="404" fill="#5B7591" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="26" font-weight="600" text-anchor="middle">形成持续累积的工作闭环</text>
+</svg>
