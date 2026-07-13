@@ -3,7 +3,6 @@ const fallbackData = {
   views: [],
   candidates: [],
   themes: [],
-  weeklyReviews: [],
 };
 
 const revealNodes = document.querySelectorAll("[data-reveal]");
@@ -40,8 +39,7 @@ const nodes = {
   publishedCount: document.querySelector("#published-count"),
   viewGrid: document.querySelector("#view-grid"),
   themeList: document.querySelector("#theme-list"),
-  candidateList: document.querySelector("#candidate-list"),
-  weeklyStrip: document.querySelector("#weekly-strip"),
+  publishedList: document.querySelector("#published-list"),
   filterButtons: document.querySelectorAll("[data-filter]"),
 };
 
@@ -102,11 +100,25 @@ function renderViews(filter = "all") {
 }
 
 function renderSimpleList(container, items, className) {
+  if (!container) return;
   container.innerHTML = "";
   items.forEach((item) => {
     const row = createElement("div", className, item);
     container.append(row);
   });
+}
+
+function renderPublishedList(data) {
+  if (!nodes.publishedList) return;
+  nodes.publishedList.innerHTML = "";
+
+  data.views
+    .filter((view) => view.published && view.url)
+    .forEach((view) => {
+      const link = createElement("a", "published-row", `${view.id}｜${view.title}`);
+      link.href = view.url;
+      nodes.publishedList.append(link);
+    });
 }
 
 function setupFilters() {
@@ -124,8 +136,7 @@ function render(data) {
   renderMetrics(data);
   renderViews();
   renderSimpleList(nodes.themeList, data.themes, "theme-row");
-  renderSimpleList(nodes.candidateList, data.candidates, "candidate-row");
-  renderSimpleList(nodes.weeklyStrip, data.weeklyReviews, "weekly-pill");
+  renderPublishedList(data);
   setupFilters();
 }
 

@@ -72,8 +72,7 @@ a {
 
 .hero-grid,
 .section-card,
-.view-card,
-.pipeline-grid article {
+.view-card {
   border: 1px solid var(--line);
   background: var(--panel);
   box-shadow: var(--shadow);
@@ -161,7 +160,6 @@ a {
 .hero-text,
 .source-note,
 .section-head p,
-.pipeline-grid p,
 .quiet-note,
 .view-meta {
   color: var(--muted);
@@ -360,68 +358,31 @@ a {
 }
 
 .theme-list,
-.candidate-list {
+.published-list {
   display: grid;
   gap: 10px;
 }
 
 .theme-row,
-.candidate-row,
-.weekly-pill {
+.published-row {
+  display: block;
   padding: 13px 15px;
   border: 1px solid var(--line);
   border-radius: 17px;
   background: rgba(255, 255, 255, 0.48);
   color: var(--ink);
   line-height: 1.5;
+  text-decoration: none;
 }
 
-.candidate-row {
-  color: var(--muted);
-}
-
-.pipeline-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.pipeline-grid article {
-  padding: 22px;
-  border-radius: 24px;
-}
-
-.pipeline-grid span {
-  color: var(--gold);
-  font-size: 0.8rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-}
-
-.pipeline-grid h3 {
-  margin: 14px 0 10px;
-  color: var(--green-strong);
-}
-
-.pipeline-grid p {
-  margin: 0;
-}
-
-.weekly-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.weekly-pill {
+.published-row {
   color: var(--green-strong);
   font-weight: 800;
 }
 
 @media (max-width: 980px) {
   .hero-grid,
-  .split-section,
-  .pipeline-grid {
+  .split-section {
     grid-template-columns: 1fr;
   }
 
@@ -432,13 +393,15 @@ a {
 
 @media (max-width: 640px) {
   .radar-page {
-    width: min(calc(100% - 22px), var(--max));
+    width: min(calc(100% - 18px), var(--max));
     padding-top: 12px;
+    padding-bottom: 42px;
   }
 
   .hero-grid {
-    padding: 12px;
-    border-radius: 24px;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 22px;
   }
 
   .topbar,
@@ -448,7 +411,60 @@ a {
   }
 
   .hero-copy {
-    padding: 22px 8px 18px;
+    padding: 18px 8px 14px;
+  }
+
+  .hero-copy h1 {
+    max-width: 11ch;
+    font-size: clamp(2.15rem, 14vw, 3.8rem);
+    line-height: 1;
+  }
+
+  .hero-text,
+  .source-note,
+  .section-head p {
+    font-size: 0.95rem;
+    line-height: 1.68;
+  }
+
+  .hero-actions,
+  .nav-links,
+  .view-toolbar {
+    width: 100%;
+  }
+
+  .nav-links a,
+  .primary-link,
+  .secondary-link,
+  .filter-button,
+  .view-link {
+    width: 100%;
+  }
+
+  .status-panel {
+    padding: 16px;
+  }
+
+  .metric-grid article {
+    min-height: 98px;
+    padding: 15px;
+  }
+
+  .metric-grid strong {
+    font-size: 2.6rem;
+  }
+
+  .radar-section {
+    margin-top: 22px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.55rem, 9vw, 2.2rem);
+  }
+
+  .view-card {
+    min-height: auto;
+    padding: 18px;
   }
 
   .metric-grid,
@@ -458,8 +474,7 @@ a {
 
   .status-panel,
   .section-card,
-  .view-card,
-  .pipeline-grid article {
+  .view-card {
     border-radius: 20px;
   }
 }

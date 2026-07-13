@@ -129,13 +129,6 @@
       "theme": "AI工具使用"
     },
     {
-      "id": "GPT",
-      "title": "GPT 思辨观点",
-      "status": "stable-note",
-      "published": false,
-      "theme": "思辨实验室"
-    },
-    {
       "id": "S001",
       "title": "洞察不是灵光一现而是可验证的过程",
       "status": "formal",
@@ -189,14 +182,5 @@
     "T007 从正确到有效",
     "T008 人机协同能力",
     "T009 认知资产的生命周期"
-  ],
-  "weeklyReviews": [
-    "weekly_review_2026W23.md",
-    "weekly_review_2026W24.md",
-    "tag_briefing_2026W24b.md",
-    "weekly_review_2026W25.md",
-    "weekly_review_2026W26.md",
-    "weekly_review_2026W28.md",
-    "weekly_review_2026W29.md"
   ]
 }
