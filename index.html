@@ -3,149 +3,138 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Judgment Lab｜观点汇报站点</title>
+    <title>MyOS Judgment Radar｜观点库可视化入口</title>
+    <meta
+      name="description"
+      content="MyOS 观点库的公开展示层：展示正式观点、候选判断、主题聚集和已发布汇报页。"
+    />
     <link rel="stylesheet" href="./home.css" />
     <script src="./home.js" defer></script>
   </head>
   <body>
-    <main class="home-page">
-      <section class="home-hero reveal" data-reveal>
-        <nav class="home-nav" aria-label="站点导航">
-          <a class="home-brand" href="./index.html">Judgment Lab</a>
-          <div class="home-nav-note">单页汇报 · 观点展示 · 推导过程</div>
+    <main class="radar-page">
+      <section class="hero-grid reveal" data-reveal>
+        <nav class="topbar" aria-label="站点导航">
+          <a class="brand" href="./index.html">MyOS Judgment Radar</a>
+          <div class="nav-links">
+            <a href="#views">Views</a>
+            <a href="#themes">Themes</a>
+            <a href="#pipeline">Pipeline</a>
+          </div>
         </nav>
 
-        <div class="hero-shell">
-          <div class="hero-copy">
-            <p class="eyebrow">View Briefs</p>
-            <h1>把观点结论、推导过程和网络位置，放进同一个汇报入口</h1>
-            <p class="hero-text">
-              这里收录的是从 Obsidian 观点库整理出的单页汇报版本。每一页都不仅展示“我相信什么”，也展示“这个判断是怎么长出来的”。
-            </p>
-
-            <div class="hero-points">
-              <span>摘要卡片</span>
-              <span>推理链路</span>
-              <span>元发现图谱</span>
-              <span>资料来源</span>
-            </div>
-
-            <div class="hero-public-note">
-              <strong>公开入口说明</strong>
-              <p>这个站点适合直接作为 GitHub Pages 对外分享入口使用。首页负责总览，卡片页负责单条观点的完整讲述。</p>
-            </div>
-          </div>
-
-          <div class="hero-panel">
-            <div class="panel-label">当前已整理</div>
-            <div class="panel-metric">
-              <strong>2</strong>
-              <span>张成熟观点汇报页</span>
-            </div>
-            <div class="panel-list">
-              <div>
-                <b>V002</b>
-                <p>认知系统竞争</p>
-              </div>
-              <div>
-                <b>V014</b>
-                <p>认知资产生命周期策略</p>
-              </div>
-            </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Public Visualization Layer</p>
+          <h1>把正在形成的判断，变成一张可巡视的地图</h1>
+          <p class="hero-text">
+            这里不是 MyOS 的权威正文库，而是观点库的公开展示层。它用于快速观察：哪些判断已经成形，哪些还在候选，哪些主题正在聚集，以及哪些内容已经可以对外分享。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#views">查看观点雷达</a>
+            <a class="secondary-link" href="./v002.html">打开 V002 示例页</a>
           </div>
         </div>
+
+        <aside class="status-panel" aria-label="当前观点库状态">
+          <div class="panel-head">
+            <span>Current Snapshot</span>
+            <b id="snapshot-date">2026-07-13</b>
+          </div>
+          <div class="metric-grid">
+            <article>
+              <strong id="view-count">22</strong>
+              <span>正式 View</span>
+            </article>
+            <article>
+              <strong id="candidate-count">13</strong>
+              <span>Candidate</span>
+            </article>
+            <article>
+              <strong id="theme-count">9</strong>
+              <span>Theme</span>
+            </article>
+            <article>
+              <strong id="published-count">2</strong>
+              <span>已发布页面</span>
+            </article>
+          </div>
+          <p class="source-note">
+            权威源仍在 Obsidian / MyOS。本页面只展示链接、状态和少量元数据，避免形成第二份手工维护正文。
+          </p>
+        </aside>
       </section>
 
-      <section class="home-section reveal" data-reveal>
+      <section class="radar-section reveal" id="views" data-reveal>
         <div class="section-head">
           <p class="eyebrow">Views</p>
-          <h2>观点卡片</h2>
-          <p>每张卡片都链接到完整汇报页，适合投屏讲述，也适合直接分享链接查看。</p>
+          <h2>正式观点雷达</h2>
+          <p>已公开的观点提供完整 HTML 汇报页；未公开的观点只展示状态，不复制正文。</p>
+        </div>
+        <div class="view-toolbar">
+          <button class="filter-button is-active" type="button" data-filter="all">全部</button>
+          <button class="filter-button" type="button" data-filter="published">已发布</button>
+          <button class="filter-button" type="button" data-filter="not-published">待可视化</button>
+        </div>
+        <div class="view-grid" id="view-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="radar-section split-section reveal" id="themes" data-reveal>
+        <div class="section-card">
+          <div class="section-head compact">
+            <p class="eyebrow">Themes</p>
+            <h2>主题聚集</h2>
+            <p>Theme 暂时作为观察入口，而不是强制层级。它帮助判断哪些方向正在变厚。</p>
+          </div>
+          <div class="theme-list" id="theme-list"></div>
         </div>
 
-        <div class="cards-grid">
-          <article class="view-card reveal" data-reveal>
-            <div class="view-meta">
-              <span class="view-id">V002</span>
-              <div class="view-tags">
-                <span>AI 时代成长</span>
-                <span>认知系统</span>
-              </div>
-            </div>
-            <h3>AI 时代真正竞争的，不是人，而是认知系统</h3>
-            <p class="view-summary">
-              当每个人都能使用 AI，长期差距不再只来自个人能力，而来自人、AI、外部记忆和反馈循环组成的认知系统。
-            </p>
-            <ul class="view-points">
-              <li>聚焦竞争单位从“个人”升级为“系统”。</li>
-              <li>完整展示从“信任 AI”到“认知系统”的推导过程。</li>
-              <li>适合讨论长期成长、工作流和复利能力。</li>
-            </ul>
-            <a class="view-link" href="./v002.html">进入汇报页</a>
-          </article>
-
-          <article class="view-card reveal" data-reveal>
-            <div class="view-meta">
-              <span class="view-id">V014</span>
-              <div class="view-tags">
-                <span>表达边界</span>
-                <span>生命周期策略</span>
-              </div>
-            </div>
-            <h3>未成之事宜保密，未熟之见需碰撞</h3>
-            <p class="view-summary">
-              关键不在“说不说”，而在“说的是什么”。目标、观点、成果分属不同阶段，因此需要保护、碰撞与传播三种不同策略。
-            </p>
-            <ul class="view-points">
-              <li>把认知资产拆成目标、观点、成果三个阶段。</li>
-              <li>强调统一公开或统一保密都会造成系统失效。</li>
-              <li>适合讨论表达策略、协作边界与判断成熟。</li>
-            </ul>
-            <a class="view-link" href="./v014.html">进入汇报页</a>
-          </article>
+        <div class="section-card">
+          <div class="section-head compact">
+            <p class="eyebrow">Candidates</p>
+            <h2>候选判断池</h2>
+            <p>Candidate 是未成熟判断的统一入口。它可以继续吸收证据、反例和表达迭代。</p>
+          </div>
+          <div class="candidate-list" id="candidate-list"></div>
         </div>
       </section>
 
-      <section class="home-section reveal" data-reveal>
+      <section class="radar-section reveal" id="pipeline" data-reveal>
         <div class="section-head">
-          <p class="eyebrow">Method</p>
-          <h2>页面组织方式</h2>
+          <p class="eyebrow">Maintenance Loop</p>
+          <h2>从输入到发布的最小闭环</h2>
+          <p>这个站点只承接“可视化展示”。判断的形成、合并、晋升和归档仍由 MyOS 与 Codex 的知识运维流程控制。</p>
         </div>
-
-        <div class="method-grid">
-          <article class="method-card">
-            <span class="method-step">01</span>
-            <h3>结论层</h3>
-            <p>先把一句话结论、关键依据、边界和行动建议压缩成适合汇报开场的摘要卡片。</p>
+        <div class="pipeline-grid">
+          <article>
+            <span>01</span>
+            <h3>GPT / IMA 输入</h3>
+            <p>思辨实验室与 IMA 周报继续作为前台生成和素材整理入口。</p>
           </article>
-          <article class="method-card">
-            <span class="method-step">02</span>
-            <h3>推导层</h3>
-            <p>再把判断生成过程展开成可点击、可切换的步骤卡，让观众跟着推理链走完整个形成过程。</p>
+          <article>
+            <span>02</span>
+            <h3>Codex 入库</h3>
+            <p>Codex 负责后台 Inbox、命名、关联、重复检查和待确认建议。</p>
           </article>
-          <article class="method-card">
-            <span class="method-step">03</span>
-            <h3>支撑层</h3>
-            <p>最后用核心引文、元发现图谱和资料来源承接证据与网络位置，增强完整性。</p>
+          <article>
+            <span>03</span>
+            <h3>MyOS 权威源</h3>
+            <p>View、Candidate、Theme 和演化记录以 Obsidian/MyOS 为准。</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>GitHub 展示</h3>
+            <p>只发布适合公开的摘要、状态和单页汇报，服务外部展示与自我巡视。</p>
           </article>
         </div>
       </section>
 
-      <section class="home-section reveal" data-reveal>
-        <div class="site-footnote">
-          <div>
-            <span class="footnote-label">站点说明</span>
-            <p>内容整理自 Obsidian MyOS 中的成熟观点、形成背景、主题与元发现材料。</p>
-          </div>
-          <div>
-            <span class="footnote-label">当前更新时间</span>
-            <p>2026-06-13</p>
-          </div>
-          <div>
-            <span class="footnote-label">当前收录</span>
-            <p>V002 / V014</p>
-          </div>
+      <section class="radar-section reveal" data-reveal>
+        <div class="section-head compact">
+          <p class="eyebrow">IMA Inbox</p>
+          <h2>周报输入记录</h2>
+          <p>IMA weekly 继续作为固定例外：用户可手动保存到 MyOS Inbox，Codex 后续负责巡检和建议。</p>
         </div>
+        <div class="weekly-strip" id="weekly-strip"></div>
       </section>
     </main>
   </body>
