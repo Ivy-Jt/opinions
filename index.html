@@ -6,7 +6,7 @@
     <title>MyOS Judgment Radar｜观点库可视化入口</title>
     <meta
       name="description"
-      content="MyOS 观点库的公开展示层：展示正式观点、候选判断、主题聚集和已发布汇报页。"
+      content="MyOS 观点库的公开展示层：展示正式观点、主题聚集和已发布汇报页。"
     />
     <link rel="stylesheet" href="./home.css" />
     <script src="./home.js" defer></script>
@@ -19,7 +19,7 @@
           <div class="nav-links">
             <a href="#views">Views</a>
             <a href="#themes">Themes</a>
-            <a href="#pipeline">Pipeline</a>
+            <a href="./v002.html">V002</a>
           </div>
         </nav>
 
@@ -27,11 +27,11 @@
           <p class="eyebrow">Public Visualization Layer</p>
           <h1>把正在形成的判断，变成一张可巡视的地图</h1>
           <p class="hero-text">
-            这里不是 MyOS 的权威正文库，而是观点库的公开展示层。它用于快速观察：哪些判断已经成形，哪些还在候选，哪些主题正在聚集，以及哪些内容已经可以对外分享。
+            这里展示已经进入 MyOS 的核心判断：哪些观点已经成形，哪些主题正在聚集，哪些内容已经整理成可分享的单页汇报。
           </p>
           <div class="hero-actions">
             <a class="primary-link" href="#views">查看观点雷达</a>
-            <a class="secondary-link" href="./v002.html">打开 V002 示例页</a>
+            <a class="secondary-link" href="./v013.html">打开人机推理页</a>
           </div>
         </div>
 
@@ -47,7 +47,7 @@
             </article>
             <article>
               <strong id="candidate-count">13</strong>
-              <span>Candidate</span>
+              <span>候选判断</span>
             </article>
             <article>
               <strong id="theme-count">9</strong>
@@ -59,7 +59,7 @@
             </article>
           </div>
           <p class="source-note">
-            权威源仍在 Obsidian / MyOS。本页面只展示链接、状态和少量元数据，避免形成第二份手工维护正文。
+            GitHub Pages 是展示入口，完整知识库仍保留在 MyOS。这里优先呈现适合公开阅读的判断结构。
           </p>
         </aside>
       </section>
@@ -68,7 +68,7 @@
         <div class="section-head">
           <p class="eyebrow">Views</p>
           <h2>正式观点雷达</h2>
-          <p>已公开的观点提供完整 HTML 汇报页；未公开的观点只展示状态，不复制正文。</p>
+          <p>已发布观点可直接打开单页汇报；未发布观点仅展示标题和主题，作为后续可视化队列。</p>
         </div>
         <div class="view-toolbar">
           <button class="filter-button is-active" type="button" data-filter="all">全部</button>
@@ -83,58 +83,19 @@
           <div class="section-head compact">
             <p class="eyebrow">Themes</p>
             <h2>主题聚集</h2>
-            <p>Theme 暂时作为观察入口，而不是强制层级。它帮助判断哪些方向正在变厚。</p>
+            <p>这些主题反映当前判断正在聚集的方向，也是后续选题和页面扩展的入口。</p>
           </div>
           <div class="theme-list" id="theme-list"></div>
         </div>
 
         <div class="section-card">
           <div class="section-head compact">
-            <p class="eyebrow">Candidates</p>
-            <h2>候选判断池</h2>
-            <p>Candidate 是未成熟判断的统一入口。它可以继续吸收证据、反例和表达迭代。</p>
+            <p class="eyebrow">Published</p>
+            <h2>已发布汇报页</h2>
+            <p>优先展示适合对外阅读的观点卡片。每张页面都压缩成结论、模型、边界和关联。</p>
           </div>
-          <div class="candidate-list" id="candidate-list"></div>
+          <div class="published-list" id="published-list"></div>
         </div>
-      </section>
-
-      <section class="radar-section reveal" id="pipeline" data-reveal>
-        <div class="section-head">
-          <p class="eyebrow">Maintenance Loop</p>
-          <h2>从输入到发布的最小闭环</h2>
-          <p>这个站点只承接“可视化展示”。判断的形成、合并、晋升和归档仍由 MyOS 与 Codex 的知识运维流程控制。</p>
-        </div>
-        <div class="pipeline-grid">
-          <article>
-            <span>01</span>
-            <h3>GPT / IMA 输入</h3>
-            <p>思辨实验室与 IMA 周报继续作为前台生成和素材整理入口。</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Codex 入库</h3>
-            <p>Codex 负责后台 Inbox、命名、关联、重复检查和待确认建议。</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>MyOS 权威源</h3>
-            <p>View、Candidate、Theme 和演化记录以 Obsidian/MyOS 为准。</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>GitHub 展示</h3>
-            <p>只发布适合公开的摘要、状态和单页汇报，服务外部展示与自我巡视。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="radar-section reveal" data-reveal>
-        <div class="section-head compact">
-          <p class="eyebrow">IMA Inbox</p>
-          <h2>周报输入记录</h2>
-          <p>IMA weekly 继续作为固定例外：用户可手动保存到 MyOS Inbox，Codex 后续负责巡检和建议。</p>
-        </div>
-        <div class="weekly-strip" id="weekly-strip"></div>
       </section>
     </main>
   </body>

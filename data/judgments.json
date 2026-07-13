@@ -78,14 +78,16 @@
       "id": "V012",
       "title": "知识库不是产品，而是认知工厂",
       "status": "formal",
-      "published": false,
+      "published": true,
+      "url": "./v012.html",
       "theme": "知识系统"
     },
     {
       "id": "V013",
       "title": "AI最大的价值，不是回答问题，而是参与推理",
       "status": "formal",
-      "published": false,
+      "published": true,
+      "url": "./v013.html",
       "theme": "人机协同"
     },
     {
@@ -107,14 +109,16 @@
       "id": "V018",
       "title": "AI时代，人的职责正在从执行者迁移为系统设计者",
       "status": "formal",
-      "published": false,
+      "published": true,
+      "url": "./v018.html",
       "theme": "人机协同"
     },
     {
       "id": "V019",
       "title": "AI的不可靠不是均匀分布的",
       "status": "formal",
-      "published": false,
+      "published": true,
+      "url": "./v019.html",
       "theme": "人机协同"
     },
     {
@@ -123,13 +127,6 @@
       "status": "formal",
       "published": false,
       "theme": "AI工具使用"
-    },
-    {
-      "id": "GPT",
-      "title": "GPT 思辨观点",
-      "status": "stable-note",
-      "published": false,
-      "theme": "思辨实验室"
     },
     {
       "id": "S001",
@@ -185,14 +182,5 @@
     "T007 从正确到有效",
     "T008 人机协同能力",
     "T009 认知资产的生命周期"
-  ],
-  "weeklyReviews": [
-    "weekly_review_2026W23.md",
-    "weekly_review_2026W24.md",
-    "tag_briefing_2026W24b.md",
-    "weekly_review_2026W25.md",
-    "weekly_review_2026W26.md",
-    "weekly_review_2026W28.md",
-    "weekly_review_2026W29.md"
   ]
 }
