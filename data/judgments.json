@@ -1,0 +1,198 @@
+{
+  "snapshotDate": "2026-07-13",
+  "source": "Obsidian / MyOS",
+  "sourcePolicy": "MyOS is the authority. This GitHub Pages site is a public visualization layer.",
+  "views": [
+    {
+      "id": "V001",
+      "title": "爆论的底层认知动作只有两类：归纳与推翻",
+      "status": "formal",
+      "published": false,
+      "theme": "判断形成"
+    },
+    {
+      "id": "V002",
+      "title": "AI时代真正竞争的，不是人，而是认知系统",
+      "status": "formal",
+      "published": true,
+      "url": "./v002.html",
+      "theme": "个人认知系统"
+    },
+    {
+      "id": "V003",
+      "title": "AI时代，人与人的差距正在从认知能力竞争转向系统韧性竞争",
+      "status": "formal",
+      "published": false,
+      "theme": "AI时代成长"
+    },
+    {
+      "id": "V005",
+      "title": "高洞察力与高敏感性并非同一能力",
+      "status": "formal",
+      "published": false,
+      "theme": "洞察能力"
+    },
+    {
+      "id": "V006",
+      "title": "好奇心的终点不是知识，而是判断",
+      "status": "formal",
+      "published": false,
+      "theme": "判断形成"
+    },
+    {
+      "id": "V007",
+      "title": "推翻一个不存在的共识，不是洞察",
+      "status": "formal",
+      "published": false,
+      "theme": "洞察能力"
+    },
+    {
+      "id": "V008",
+      "title": "别人听不懂，不一定是你表达不好",
+      "status": "formal",
+      "published": false,
+      "theme": "表达边界"
+    },
+    {
+      "id": "V009",
+      "title": "专家压缩知识，大师自由切换压缩与解压",
+      "status": "formal",
+      "published": false,
+      "theme": "知识表达"
+    },
+    {
+      "id": "V010",
+      "title": "知行不合一最大的障碍，不是无知，而是认知系统与行为系统属于两个不同系统",
+      "status": "formal",
+      "published": false,
+      "theme": "从正确到有效"
+    },
+    {
+      "id": "V011",
+      "title": "专家最大的沟通误区，不是讲不清，而是总想一次讲完",
+      "status": "formal",
+      "published": false,
+      "theme": "知识表达"
+    },
+    {
+      "id": "V012",
+      "title": "知识库不是产品，而是认知工厂",
+      "status": "formal",
+      "published": false,
+      "theme": "知识系统"
+    },
+    {
+      "id": "V013",
+      "title": "AI最大的价值，不是回答问题，而是参与推理",
+      "status": "formal",
+      "published": false,
+      "theme": "人机协同"
+    },
+    {
+      "id": "V014",
+      "title": "未成之事宜保密，未熟之见需碰撞",
+      "status": "formal",
+      "published": true,
+      "url": "./v014.html",
+      "theme": "认知资产生命周期"
+    },
+    {
+      "id": "V017",
+      "title": "高质量洞察不会终结问题，而会扩大地图",
+      "status": "formal",
+      "published": false,
+      "theme": "洞察能力"
+    },
+    {
+      "id": "V018",
+      "title": "AI时代，人的职责正在从执行者迁移为系统设计者",
+      "status": "formal",
+      "published": false,
+      "theme": "人机协同"
+    },
+    {
+      "id": "V019",
+      "title": "AI的不可靠不是均匀分布的",
+      "status": "formal",
+      "published": false,
+      "theme": "人机协同"
+    },
+    {
+      "id": "V020",
+      "title": "AI工具的成本问题，往往先是产品机制未被摸清的问题",
+      "status": "formal",
+      "published": false,
+      "theme": "AI工具使用"
+    },
+    {
+      "id": "GPT",
+      "title": "GPT 思辨观点",
+      "status": "stable-note",
+      "published": false,
+      "theme": "思辨实验室"
+    },
+    {
+      "id": "S001",
+      "title": "洞察不是灵光一现而是可验证的过程",
+      "status": "formal",
+      "published": false,
+      "theme": "洞察能力"
+    },
+    {
+      "id": "S002",
+      "title": "经营的原点是机会圈与能力圈的重合",
+      "status": "formal",
+      "published": false,
+      "theme": "经营判断"
+    },
+    {
+      "id": "S003",
+      "title": "问题定义优先于解决方案选择",
+      "status": "formal",
+      "published": false,
+      "theme": "问题定义"
+    },
+    {
+      "id": "S004",
+      "title": "高质量学习依赖提问而不只是阅读量",
+      "status": "formal",
+      "published": false,
+      "theme": "学习方法"
+    }
+  ],
+  "candidates": [
+    "C001 高价值判断往往始于模糊感觉，而非清晰概念",
+    "C002 认知升级是即时奖励，行为改变是延迟奖励",
+    "CJ-W23-00 AI时代的认知决策升级",
+    "CJ-W23-01 AI时代稀缺价值从信息处理转向判断与影响决策",
+    "CJ-W23-02 高质量AI协作依赖需求定义与执行分工",
+    "CJ-W23-03 个人知识管理的终点是判断链而不是资料库",
+    "CJ-W24-00 AI时代个人价值正在变成复合系统能力",
+    "CJ-W24-01 AI的马太效应来自底层能力与AI使用能力的乘法关系",
+    "CJ-W24-02 判断力的上限受健康账户约束",
+    "CJ-W24-03 语义中间层的价值取决于能否形成读写闭环",
+    "CJ001 爆论的底层认知动作只有两类：归纳与推翻",
+    "CJ002 AI时代真正竞争的不是人而是认知系统",
+    "CJ003 高价值判断往往始于模糊感觉而非清晰概念"
+  ],
+  "themes": [
+    "T001 判断是如何形成的",
+    "T002 AI时代的人应该如何成长",
+    "T003 个人认知系统",
+    "T004 AI时代的认知带宽差异",
+    "T005 自我改造能力",
+    "T006 洞察如何产生影响力",
+    "T007 从正确到有效",
+    "T008 人机协同能力",
+    "T009 认知资产的生命周期"
+  ],
+  "weeklyReviews": [
+    "weekly_review_2026W23.md",
+    "weekly_review_2026W24.md",
+    "tag_briefing_2026W24b.md",
+    "weekly_review_2026W25.md",
+    "weekly_review_2026W26.md",
+    "weekly_review_2026W28.md",
+    "weekly_review_2026W29.md"
+  ]
+}
