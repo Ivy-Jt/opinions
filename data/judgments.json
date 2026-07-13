@@ -78,14 +78,16 @@
       "id": "V012",
       "title": "知识库不是产品，而是认知工厂",
       "status": "formal",
-      "published": false,
+      "published": true,
+      "url": "./v012.html",
       "theme": "知识系统"
     },
     {
       "id": "V013",
       "title": "AI最大的价值，不是回答问题，而是参与推理",
       "status": "formal",
-      "published": false,
+      "published": true,
+      "url": "./v013.html",
       "theme": "人机协同"
     },
     {
@@ -107,14 +109,16 @@
       "id": "V018",
       "title": "AI时代，人的职责正在从执行者迁移为系统设计者",
       "status": "formal",
-      "published": false,
+      "published": true,
+      "url": "./v018.html",
       "theme": "人机协同"
     },
     {
       "id": "V019",
       "title": "AI的不可靠不是均匀分布的",
       "status": "formal",
-      "published": false,
+      "published": true,
+      "url": "./v019.html",
       "theme": "人机协同"
     },
     {
