@@ -1,5 +1,5 @@
 {
-  "snapshotDate": "2026-07-13",
+  "snapshotDate": "2026-08-19",
   "source": "Obsidian / MyOS",
   "sourcePolicy": "MyOS is the authority. This GitHub Pages site is a public visualization layer.",
   "views": [
@@ -127,6 +127,30 @@
       "status": "formal",
       "published": false,
       "theme": "AI工具使用"
+    },
+    {
+      "id": "V027",
+      "title": "AI-native 知识工作者的分化轴，正在从 AI 熟练度转向工作闭环控制力",
+      "status": "formal",
+      "published": true,
+      "url": "./v027.html",
+      "theme": "人机协同"
+    },
+    {
+      "id": "V028",
+      "title": "AI 扩大生成带宽之后，评价带宽更容易成为新的瓶颈",
+      "status": "formal",
+      "published": true,
+      "url": "./v028.html",
+      "theme": "人机协同"
+    },
+    {
+      "id": "V029",
+      "title": "个人 AI 效率不会自动变成组织生产力，价值还需要经过一次工作重构",
+      "status": "formal",
+      "published": true,
+      "url": "./v029.html",
+      "theme": "人机协同"
     },
     {
       "id": "S001",

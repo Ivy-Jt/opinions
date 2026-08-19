@@ -200,6 +200,10 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.flow.four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .flow-step {
   position: relative;
   min-height: 126px;
