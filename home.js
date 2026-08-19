@@ -1,5 +1,5 @@
 const fallbackData = {
-  snapshotDate: "2026-07-13",
+  snapshotDate: "2026-08-19",
   views: [],
   candidates: [],
   themes: [],
