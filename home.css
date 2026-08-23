@@ -769,6 +769,10 @@ a.inspector-item:hover {
 }
 
 @media (max-width: 680px) {
+  body {
+    font-size: 0.93rem;
+  }
+
   .page-shell {
     width: min(calc(100% - 20px), var(--max));
     padding-top: 10px;
@@ -783,20 +787,40 @@ a.inspector-item:hover {
   }
 
   .nav-links a {
+    min-height: 34px;
     padding-inline: 9px;
+    font-size: 0.8rem;
   }
 
   .overview,
   .section {
-    padding: 20px;
+    padding: 18px;
   }
 
   .overview {
-    gap: 24px;
+    gap: 20px;
   }
 
   .overview h1 {
-    font-size: 2.05rem;
+    margin-bottom: 12px;
+    font-size: 1.9rem;
+  }
+
+  .overview-text {
+    font-size: 0.92rem;
+    line-height: 1.62;
+  }
+
+  .overview-actions {
+    margin-top: 20px;
+  }
+
+  .snapshot {
+    padding: 16px;
+  }
+
+  .metric-grid strong {
+    font-size: 2rem;
   }
 
   .section-head {
@@ -804,12 +828,14 @@ a.inspector-item:hover {
   }
 
   .section-head h2 {
-    font-size: 1.85rem;
+    font-size: 1.65rem;
   }
 
   .section-head > p {
     margin-top: 10px;
     text-align: left;
+    font-size: 0.84rem;
+    line-height: 1.58;
   }
 
   .theme-grid,
@@ -818,7 +844,32 @@ a.inspector-item:hover {
   }
 
   .theme-card {
-    min-height: 194px;
+    min-height: 168px;
+    padding: 15px;
+  }
+
+  .theme-id,
+  .theme-count {
+    font-size: 0.7rem;
+  }
+
+  .theme-name {
+    margin-top: 12px;
+    font-size: 1rem;
+  }
+
+  .theme-question {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    line-height: 1.55;
+  }
+
+  .theme-view-chips {
+    margin-top: 12px;
+  }
+
+  .theme-view-chip {
+    font-size: 0.64rem;
   }
 
   .graph-toolbar,
@@ -838,13 +889,58 @@ a.inspector-item:hover {
     max-width: none;
   }
 
-  .graph-stage,
-  #knowledge-graph {
-    min-height: 520px;
+  .graph-stage {
+    min-height: 0;
+    overflow: hidden;
+    background-size: 24px 24px;
   }
 
   #knowledge-graph {
-    min-width: 760px;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .graph-edge-label {
+    font-size: 9px;
+    stroke-width: 3px;
+  }
+
+  .theme-node-id {
+    font-size: 11px;
+  }
+
+  .theme-node-name {
+    font-size: 10px;
+  }
+
+  .theme-node-count {
+    font-size: 8px;
+  }
+
+  .judgment-hub text {
+    font-size: 14px;
+  }
+
+  .judgment-hub .hub-name {
+    font-size: 9px;
+  }
+
+  .judgment-node text {
+    font-size: 12px;
+  }
+
+  .graph-inspector {
+    padding: 16px;
+  }
+
+  .graph-inspector h3 {
+    font-size: 1rem;
+  }
+
+  .graph-inspector p,
+  .inspector-item {
+    font-size: 0.78rem;
   }
 
   .segmented-control {
@@ -856,7 +952,19 @@ a.inspector-item:hover {
   }
 
   .metric-grid article {
-    min-height: 92px;
+    min-height: 82px;
+    padding: 12px;
+  }
+
+  .view-card {
+    min-height: 164px;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .view-card h3 {
+    font-size: 0.9rem;
+    line-height: 1.45;
   }
 
   .site-footer {
