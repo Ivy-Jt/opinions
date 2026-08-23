@@ -3,100 +3,143 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MyOS Judgment Radar｜观点库可视化入口</title>
+    <title>Judgment Lab｜观点主题与关系图谱</title>
     <meta
       name="description"
-      content="MyOS 观点库的公开展示层：展示正式观点、主题聚集和已发布汇报页。"
+      content="Judgment Lab 的公开观点索引：从长期主题进入，查看判断之间的演化与关联。"
     />
     <link rel="stylesheet" href="./home.css" />
     <script src="./home.js" defer></script>
   </head>
   <body>
-    <main class="radar-page">
-      <section class="hero-grid reveal" data-reveal>
-        <nav class="topbar" aria-label="站点导航">
-          <a class="brand" href="./index.html">MyOS Judgment Radar</a>
-          <div class="nav-links">
-            <a href="#views">Views</a>
-            <a href="#themes">Themes</a>
-            <a href="./v002.html">V002</a>
-          </div>
-        </nav>
+    <main class="page-shell">
+      <nav class="topbar" aria-label="站点导航">
+        <a class="brand" href="./index.html">
+          <span class="brand-mark">JL</span>
+          <span>Judgment Lab</span>
+        </a>
+        <div class="nav-links">
+          <a href="#themes">主题</a>
+          <a href="#graph">图谱</a>
+          <a href="#views">观点</a>
+        </div>
+      </nav>
 
-        <div class="hero-copy">
-          <p class="eyebrow">Public Visualization Layer</p>
-          <h1>把正在形成的判断，变成一张可巡视的地图</h1>
-          <p class="hero-text">
-            这里展示已经进入 MyOS 的核心判断：哪些观点已经成形，哪些主题正在聚集，哪些内容已经整理成可分享的单页汇报。
+      <header class="overview reveal" data-reveal>
+        <div class="overview-copy">
+          <p class="eyebrow">Judgment System</p>
+          <h1>观点主题与关系图谱</h1>
+          <p class="overview-text">
+            从九个长期问题进入，查看判断如何生成、传递、转化，并在人机协作中继续生长。
           </p>
-          <div class="hero-actions">
-            <a class="primary-link" href="#views">查看观点雷达</a>
-            <a class="secondary-link" href="./v013.html">打开人机推理页</a>
+          <div class="overview-actions">
+            <a class="primary-link" href="#graph">进入关系图谱</a>
+            <a class="secondary-link" href="#themes">浏览主题地图</a>
           </div>
         </div>
 
-        <aside class="status-panel" aria-label="当前观点库状态">
-          <div class="panel-head">
-            <span>Current Snapshot</span>
-            <b id="snapshot-date">2026-08-19</b>
+        <section class="snapshot" aria-label="观点库概览">
+          <div class="snapshot-head">
+            <span>当前快照</span>
+            <time id="snapshot-date">2026-08-23</time>
           </div>
           <div class="metric-grid">
             <article>
-              <strong id="view-count">24</strong>
-              <span>正式 View</span>
-            </article>
-            <article>
-              <strong id="candidate-count">13</strong>
-              <span>候选判断</span>
+              <strong id="view-count">25</strong>
+              <span>成熟判断</span>
             </article>
             <article>
               <strong id="theme-count">9</strong>
-              <span>Theme</span>
+              <span>长期主题</span>
+            </article>
+            <article>
+              <strong id="connection-count">21</strong>
+              <span>观点关联</span>
             </article>
             <article>
               <strong id="published-count">9</strong>
-              <span>已发布页面</span>
+              <span>可读单页</span>
             </article>
           </div>
-          <p class="source-note">
-            GitHub Pages 是展示入口，完整知识库仍保留在 MyOS。这里优先呈现适合公开阅读的判断结构。
-          </p>
-        </aside>
+          <p class="snapshot-note">主题负责提出长期问题，观点负责给出阶段判断，关联负责保留它们如何继续生长。</p>
+        </section>
+      </header>
+
+      <section class="section reveal" id="themes" data-reveal>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Theme Map</p>
+            <h2>九个长期问题</h2>
+          </div>
+          <p>点击任一主题，可在下方图谱中查看它与观点的连接。</p>
+        </div>
+        <div class="theme-grid" id="theme-grid" aria-live="polite"></div>
       </section>
 
-      <section class="radar-section reveal" id="views" data-reveal>
+      <section class="section reveal" id="graph" data-reveal>
         <div class="section-head">
-          <p class="eyebrow">Views</p>
-          <h2>正式观点雷达</h2>
-          <p>已发布观点可直接打开单页汇报；未发布观点仅展示标题和主题，作为后续可视化队列。</p>
+          <div>
+            <p class="eyebrow">Relationship Graph</p>
+            <h2>从主题网络到观点链</h2>
+          </div>
+          <p id="graph-caption">先看主题之间如何衔接，再进入单一主题观察内部观点。</p>
         </div>
+
+        <div class="graph-toolbar" aria-label="图谱控制">
+          <div class="segmented-control" role="group" aria-label="图谱模式">
+            <button class="graph-mode is-active" type="button" data-graph-mode="themes">主题关系</button>
+            <button class="graph-mode" type="button" data-graph-mode="judgments">观点关系</button>
+          </div>
+          <label class="theme-select-label" for="graph-theme-select">
+            <span>主题</span>
+            <select id="graph-theme-select" disabled></select>
+          </label>
+        </div>
+
+        <div class="graph-layout">
+          <div class="graph-stage" tabindex="0" aria-label="交互式观点关系图谱">
+            <svg id="knowledge-graph" viewBox="0 0 1120 680" role="img" aria-labelledby="graph-title graph-desc">
+              <title id="graph-title">观点主题与关系图谱</title>
+              <desc id="graph-desc">主题模式展示九个主题之间的联系；观点模式展示所选主题中的判断及其关联。</desc>
+            </svg>
+          </div>
+          <aside class="graph-inspector" id="graph-inspector" aria-live="polite">
+            <p class="inspector-kicker">图谱说明</p>
+            <h3>点击节点查看详情</h3>
+            <p>主题节点会进入对应观点链；观点节点会显示完整标题、主题归属与公开单页入口。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section reveal" id="views" data-reveal>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Judgment Index</p>
+            <h2>成熟判断索引</h2>
+          </div>
+          <p id="view-summary">按主题筛选或直接搜索；有完整单页的观点可以继续展开阅读。</p>
+        </div>
+
         <div class="view-toolbar">
-          <button class="filter-button is-active" type="button" data-filter="all">全部</button>
-          <button class="filter-button" type="button" data-filter="published">已发布</button>
-          <button class="filter-button" type="button" data-filter="not-published">待可视化</button>
+          <label class="search-field" for="view-search">
+            <span class="sr-only">搜索观点</span>
+            <input id="view-search" type="search" placeholder="搜索编号或观点标题" autocomplete="off" />
+          </label>
+          <div class="segmented-control" role="group" aria-label="观点页面筛选">
+            <button class="view-filter is-active" type="button" data-view-filter="all">全部</button>
+            <button class="view-filter" type="button" data-view-filter="published">有单页</button>
+            <button class="view-filter" type="button" data-view-filter="index">仅索引</button>
+          </div>
+          <button class="clear-theme" id="clear-theme" type="button" hidden>清除主题筛选</button>
         </div>
+
         <div class="view-grid" id="view-grid" aria-live="polite"></div>
       </section>
 
-      <section class="radar-section split-section reveal" id="themes" data-reveal>
-        <div class="section-card">
-          <div class="section-head compact">
-            <p class="eyebrow">Themes</p>
-            <h2>主题聚集</h2>
-            <p>这些主题反映当前判断正在聚集的方向，也是后续选题和页面扩展的入口。</p>
-          </div>
-          <div class="theme-list" id="theme-list"></div>
-        </div>
-
-        <div class="section-card">
-          <div class="section-head compact">
-            <p class="eyebrow">Published</p>
-            <h2>已发布汇报页</h2>
-            <p>优先展示适合对外阅读的观点卡片。每张页面都压缩成结论、模型、边界和关联。</p>
-          </div>
-          <div class="published-list" id="published-list"></div>
-        </div>
-      </section>
+      <footer class="site-footer">
+        <span>Judgment Lab</span>
+        <span>持续更新的主题、判断与关系</span>
+      </footer>
     </main>
   </body>
 </html>

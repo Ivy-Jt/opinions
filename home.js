@@ -1,13 +1,429 @@
+const SVG_NS = "http://www.w3.org/2000/svg";
+
 const fallbackData = {
-  snapshotDate: "2026-08-19",
+  snapshotDate: "2026-08-23",
   views: [],
-  candidates: [],
   themes: [],
+  themeConnections: [],
+  judgmentConnections: [],
 };
 
-const revealNodes = document.querySelectorAll("[data-reveal]");
+const nodes = {
+  snapshotDate: document.querySelector("#snapshot-date"),
+  viewCount: document.querySelector("#view-count"),
+  themeCount: document.querySelector("#theme-count"),
+  connectionCount: document.querySelector("#connection-count"),
+  publishedCount: document.querySelector("#published-count"),
+  themeGrid: document.querySelector("#theme-grid"),
+  graph: document.querySelector("#knowledge-graph"),
+  graphCaption: document.querySelector("#graph-caption"),
+  graphInspector: document.querySelector("#graph-inspector"),
+  graphModeButtons: document.querySelectorAll("[data-graph-mode]"),
+  graphThemeSelect: document.querySelector("#graph-theme-select"),
+  viewGrid: document.querySelector("#view-grid"),
+  viewSummary: document.querySelector("#view-summary"),
+  viewSearch: document.querySelector("#view-search"),
+  viewFilterButtons: document.querySelectorAll("[data-view-filter]"),
+  clearTheme: document.querySelector("#clear-theme"),
+};
 
-if ("IntersectionObserver" in window) {
+const themeLayout = {
+  T001: [160, 170],
+  T004: [430, 105],
+  T006: [710, 145],
+  T005: [955, 230],
+  T007: [930, 500],
+  T009: [670, 545],
+  T008: [500, 365],
+  T003: [330, 555],
+  T002: [135, 455],
+};
+
+let radarData = fallbackData;
+let graphMode = "themes";
+let selectedThemeId = "T001";
+let viewFilter = "all";
+let selectedViewTheme = null;
+
+function createElement(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined && text !== null) element.textContent = text;
+  return element;
+}
+
+function createSvg(tag, attributes = {}) {
+  const element = document.createElementNS(SVG_NS, tag);
+  Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+  return element;
+}
+
+function getTheme(themeId) {
+  return radarData.themes.find((theme) => theme.id === themeId);
+}
+
+function getView(viewId) {
+  return radarData.views.find((view) => view.id === viewId);
+}
+
+function getThemeViews(themeId) {
+  return radarData.views.filter((view) => view.themeIds.includes(themeId));
+}
+
+function renderMetrics() {
+  nodes.snapshotDate.textContent = radarData.snapshotDate;
+  nodes.snapshotDate.dateTime = radarData.snapshotDate;
+  nodes.viewCount.textContent = radarData.views.length;
+  nodes.themeCount.textContent = radarData.themes.length;
+  nodes.connectionCount.textContent = radarData.judgmentConnections.length;
+  nodes.publishedCount.textContent = radarData.views.filter((view) => view.published).length;
+}
+
+function activateTheme(themeId, openGraph = true) {
+  selectedThemeId = themeId;
+  selectedViewTheme = themeId;
+  nodes.graphThemeSelect.value = themeId;
+
+  document.querySelectorAll("[data-theme-id]").forEach((element) => {
+    element.classList.toggle("is-selected", element.dataset.themeId === themeId);
+  });
+
+  if (openGraph) {
+    setGraphMode("judgments");
+    document.querySelector("#graph").scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    renderGraph();
+  }
+
+  renderViews();
+}
+
+function renderThemes() {
+  nodes.themeGrid.innerHTML = "";
+
+  radarData.themes.forEach((theme) => {
+    const views = getThemeViews(theme.id);
+    const card = createElement("button", "theme-card");
+    card.type = "button";
+    card.dataset.themeId = theme.id;
+    card.style.setProperty("--theme-color", theme.color);
+    card.setAttribute("aria-label", `${theme.id} ${theme.name}，${views.length} 条相关判断`);
+
+    const header = createElement("span", "theme-card-head");
+    header.append(
+      createElement("strong", "theme-id", theme.id),
+      createElement("span", "theme-count", `${views.length} 条判断`)
+    );
+
+    const title = createElement("span", "theme-name", theme.name);
+    const question = createElement("span", "theme-question", theme.question);
+    const chips = createElement("span", "theme-view-chips");
+    views.slice(0, 5).forEach((view) => chips.append(createElement("span", "theme-view-chip", view.id)));
+    if (views.length > 5) chips.append(createElement("span", "theme-view-chip more", `+${views.length - 5}`));
+
+    card.append(header, title, question, chips);
+    card.addEventListener("click", () => activateTheme(theme.id));
+    nodes.themeGrid.append(card);
+  });
+}
+
+function setupGraphSelect() {
+  nodes.graphThemeSelect.innerHTML = "";
+  radarData.themes.forEach((theme) => {
+    const option = createElement("option", "", `${theme.id}｜${theme.name}`);
+    option.value = theme.id;
+    nodes.graphThemeSelect.append(option);
+  });
+  nodes.graphThemeSelect.value = selectedThemeId;
+}
+
+function addGraphDefinitions() {
+  const defs = createSvg("defs");
+  const marker = createSvg("marker", {
+    id: "arrowhead",
+    markerWidth: "8",
+    markerHeight: "8",
+    refX: "7",
+    refY: "4",
+    orient: "auto",
+  });
+  marker.append(createSvg("path", { d: "M0,0 L8,4 L0,8 Z", fill: "#94a3b8" }));
+  defs.append(marker);
+  nodes.graph.append(defs);
+}
+
+function appendEdge(source, target, label, curved = false) {
+  const [sx, sy] = source;
+  const [tx, ty] = target;
+  const path = createSvg("path", {
+    class: "graph-edge",
+    d: curved
+      ? `M ${sx} ${sy} Q ${(sx + tx) / 2} ${Math.min(sy, ty) - 46} ${tx} ${ty}`
+      : `M ${sx} ${sy} L ${tx} ${ty}`,
+    "marker-end": "url(#arrowhead)",
+  });
+  nodes.graph.append(path);
+
+  if (label) {
+    const text = createSvg("text", {
+      class: "graph-edge-label",
+      x: String((sx + tx) / 2),
+      y: String((sy + ty) / 2 - 8),
+      "text-anchor": "middle",
+    });
+    text.textContent = label;
+    nodes.graph.append(text);
+  }
+}
+
+function makeInteractive(group, activate) {
+  group.setAttribute("tabindex", "0");
+  group.setAttribute("role", "button");
+  group.addEventListener("click", activate);
+  group.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      activate();
+    }
+  });
+}
+
+function showThemeInspector(theme) {
+  const views = getThemeViews(theme.id);
+  nodes.graphInspector.innerHTML = "";
+  const kicker = createElement("p", "inspector-kicker", `${theme.id} · ${views.length} 条相关判断`);
+  kicker.style.color = theme.color;
+  const title = createElement("h3", "", theme.name);
+  const question = createElement("p", "", theme.question);
+  const list = createElement("div", "inspector-list");
+  views.slice(0, 6).forEach((view) => {
+    const item = createElement(view.url ? "a" : "span", "inspector-item", `${view.id}｜${view.title}`);
+    if (view.url) item.href = view.url;
+    list.append(item);
+  });
+  nodes.graphInspector.append(kicker, title, question, list);
+}
+
+function showViewInspector(view) {
+  nodes.graphInspector.innerHTML = "";
+  const kicker = createElement("p", "inspector-kicker", view.id);
+  const title = createElement("h3", "", view.title);
+  const themeNames = view.themeIds.map((id) => getTheme(id)?.name).filter(Boolean).join(" · ");
+  const meta = createElement("p", "", themeNames);
+  nodes.graphInspector.append(kicker, title, meta);
+
+  if (view.url) {
+    const link = createElement("a", "inspector-link", "打开观点单页");
+    link.href = view.url;
+    nodes.graphInspector.append(link);
+  } else {
+    nodes.graphInspector.append(createElement("p", "inspector-note", "当前在公开索引中保留标题与关系。"));
+  }
+}
+
+function renderThemeGraph() {
+  nodes.graphCaption.textContent = "九个主题不是平铺目录，而是从判断生成、传递、影响到现实转化的连续问题。";
+
+  radarData.themeConnections.forEach((edge) => {
+    const source = themeLayout[edge.source];
+    const target = themeLayout[edge.target];
+    if (source && target) appendEdge(source, target, edge.label, true);
+  });
+
+  radarData.themes.forEach((theme) => {
+    const [x, y] = themeLayout[theme.id];
+    const count = getThemeViews(theme.id).length;
+    const group = createSvg("g", {
+      class: `theme-node${theme.id === selectedThemeId ? " is-selected" : ""}`,
+      transform: `translate(${x} ${y})`,
+      "aria-label": `${theme.id} ${theme.name}`,
+    });
+    group.dataset.nodeId = theme.id;
+    group.style.setProperty("--node-color", theme.color);
+
+    group.append(createSvg("rect", { x: "-78", y: "-38", width: "156", height: "76", rx: "8" }));
+    const idText = createSvg("text", { class: "theme-node-id", y: "-9", "text-anchor": "middle" });
+    idText.textContent = theme.id;
+    const nameText = createSvg("text", { class: "theme-node-name", y: "13", "text-anchor": "middle" });
+    nameText.textContent = theme.name.length > 12 ? `${theme.name.slice(0, 12)}…` : theme.name;
+    const countText = createSvg("text", { class: "theme-node-count", y: "31", "text-anchor": "middle" });
+    countText.textContent = `${count} 条判断`;
+    const tooltip = createSvg("title");
+    tooltip.textContent = `${theme.id}｜${theme.name}\n${theme.question}`;
+    group.append(idText, nameText, countText, tooltip);
+    makeInteractive(group, () => activateTheme(theme.id));
+    group.addEventListener("focus", () => showThemeInspector(theme));
+    group.addEventListener("mouseenter", () => showThemeInspector(theme));
+    nodes.graph.append(group);
+  });
+
+  showThemeInspector(getTheme(selectedThemeId) || radarData.themes[0]);
+}
+
+function judgmentLayout(views) {
+  const positions = {};
+  const center = [560, 330];
+  const radiusX = views.length > 8 ? 430 : 360;
+  const radiusY = views.length > 8 ? 260 : 220;
+
+  views.forEach((view, index) => {
+    const angle = -Math.PI / 2 + (index * Math.PI * 2) / views.length;
+    positions[view.id] = [
+      center[0] + Math.cos(angle) * radiusX,
+      center[1] + Math.sin(angle) * radiusY,
+    ];
+  });
+  return { positions, center };
+}
+
+function renderJudgmentGraph() {
+  const theme = getTheme(selectedThemeId) || radarData.themes[0];
+  const views = getThemeViews(theme.id);
+  const { positions, center } = judgmentLayout(views);
+  const viewIds = new Set(views.map((view) => view.id));
+
+  nodes.graphCaption.textContent = `${theme.id}｜${theme.name}：${theme.question}`;
+
+  views.forEach((view) => appendEdge(center, positions[view.id], "", false));
+  radarData.judgmentConnections
+    .filter((edge) => viewIds.has(edge.source) && viewIds.has(edge.target))
+    .forEach((edge) => appendEdge(positions[edge.source], positions[edge.target], edge.label, true));
+
+  const themeGroup = createSvg("g", {
+    class: "judgment-hub",
+    transform: `translate(${center[0]} ${center[1]})`,
+  });
+  themeGroup.style.setProperty("--node-color", theme.color);
+  themeGroup.append(createSvg("circle", { r: "66" }));
+  const themeId = createSvg("text", { y: "-7", "text-anchor": "middle" });
+  themeId.textContent = theme.id;
+  const themeName = createSvg("text", { class: "hub-name", y: "17", "text-anchor": "middle" });
+  themeName.textContent = theme.name.length > 10 ? `${theme.name.slice(0, 10)}…` : theme.name;
+  themeGroup.append(themeId, themeName);
+  makeInteractive(themeGroup, () => showThemeInspector(theme));
+  nodes.graph.append(themeGroup);
+
+  views.forEach((view) => {
+    const [x, y] = positions[view.id];
+    const group = createSvg("g", {
+      class: `judgment-node${view.published ? " has-page" : ""}`,
+      transform: `translate(${x} ${y})`,
+      "aria-label": `${view.id} ${view.title}`,
+    });
+    group.style.setProperty("--node-color", theme.color);
+    group.append(createSvg("rect", { x: "-64", y: "-27", width: "128", height: "54", rx: "8" }));
+    const idText = createSvg("text", { y: "5", "text-anchor": "middle" });
+    idText.textContent = view.id;
+    if (view.published) group.append(createSvg("circle", { class: "page-dot", cx: "50", cy: "-15", r: "4" }));
+    const tooltip = createSvg("title");
+    tooltip.textContent = `${view.id}｜${view.title}`;
+    group.append(idText, tooltip);
+    makeInteractive(group, () => {
+      showViewInspector(view);
+      document.querySelectorAll(".judgment-node").forEach((node) => node.classList.remove("is-open"));
+      group.classList.add("is-open");
+    });
+    group.addEventListener("focus", () => showViewInspector(view));
+    nodes.graph.append(group);
+  });
+
+  showThemeInspector(theme);
+}
+
+function renderGraph() {
+  nodes.graph.innerHTML = "";
+  addGraphDefinitions();
+  if (!radarData.themes.length) {
+    nodes.graphCaption.textContent = "图谱数据暂未加载。";
+    return;
+  }
+  if (graphMode === "themes") renderThemeGraph();
+  else renderJudgmentGraph();
+}
+
+function setGraphMode(mode) {
+  graphMode = mode;
+  nodes.graphModeButtons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.graphMode === mode);
+  });
+  nodes.graphThemeSelect.disabled = mode !== "judgments";
+  renderGraph();
+}
+
+function renderViews() {
+  const query = nodes.viewSearch.value.trim().toLowerCase();
+  const filtered = radarData.views.filter((view) => {
+    if (viewFilter === "published" && !view.published) return false;
+    if (viewFilter === "index" && view.published) return false;
+    if (selectedViewTheme && !view.themeIds.includes(selectedViewTheme)) return false;
+    if (query && !`${view.id} ${view.title}`.toLowerCase().includes(query)) return false;
+    return true;
+  });
+
+  nodes.viewGrid.innerHTML = "";
+  filtered.forEach((view) => {
+    const card = createElement("article", `view-card${view.published ? " has-page" : ""}`);
+    const header = createElement("div", "view-card-head");
+    header.append(createElement("span", "view-id", view.id));
+    if (view.published) header.append(createElement("span", "page-label", "单页"));
+
+    const title = createElement("h3", "", view.title);
+    const themes = createElement("div", "view-themes");
+    view.themeIds.forEach((themeId) => {
+      const theme = getTheme(themeId);
+      if (!theme) return;
+      const chip = createElement("button", "view-theme", theme.id);
+      chip.type = "button";
+      chip.title = theme.name;
+      chip.style.setProperty("--theme-color", theme.color);
+      chip.addEventListener("click", () => activateTheme(theme.id));
+      themes.append(chip);
+    });
+    card.append(header, title, themes);
+
+    if (view.published && view.url) {
+      const link = createElement("a", "view-link", "展开阅读");
+      link.href = view.url;
+      card.append(link);
+    }
+    nodes.viewGrid.append(card);
+  });
+
+  const theme = selectedViewTheme ? getTheme(selectedViewTheme) : null;
+  nodes.viewSummary.textContent = theme
+    ? `${theme.id}｜${theme.name} · 当前显示 ${filtered.length} 条判断`
+    : `当前显示 ${filtered.length} 条成熟判断`;
+  nodes.clearTheme.hidden = !selectedViewTheme;
+}
+
+function setupInteractions() {
+  nodes.graphModeButtons.forEach((button) => {
+    button.addEventListener("click", () => setGraphMode(button.dataset.graphMode));
+  });
+  nodes.graphThemeSelect.addEventListener("change", () => activateTheme(nodes.graphThemeSelect.value, false));
+
+  nodes.viewFilterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      viewFilter = button.dataset.viewFilter;
+      nodes.viewFilterButtons.forEach((node) => node.classList.toggle("is-active", node === button));
+      renderViews();
+    });
+  });
+  nodes.viewSearch.addEventListener("input", renderViews);
+  nodes.clearTheme.addEventListener("click", () => {
+    selectedViewTheme = null;
+    document.querySelectorAll(".theme-card").forEach((card) => card.classList.remove("is-selected"));
+    renderViews();
+  });
+}
+
+function setupReveal() {
+  const revealNodes = document.querySelectorAll("[data-reveal]");
+  if (!("IntersectionObserver" in window)) {
+    revealNodes.forEach((node) => node.classList.add("is-visible"));
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -17,135 +433,26 @@ if ("IntersectionObserver" in window) {
         }
       });
     },
-    {
-      threshold: 0.14,
-      rootMargin: "0px 0px -40px 0px",
-    }
+    { threshold: 0.08, rootMargin: "0px 0px -32px 0px" }
   );
-
-  revealNodes.forEach((node, index) => {
-    node.style.transitionDelay = `${Math.min(index * 60, 220)}ms`;
-    observer.observe(node);
-  });
-} else {
-  revealNodes.forEach((node) => node.classList.add("is-visible"));
-}
-
-const nodes = {
-  snapshotDate: document.querySelector("#snapshot-date"),
-  viewCount: document.querySelector("#view-count"),
-  candidateCount: document.querySelector("#candidate-count"),
-  themeCount: document.querySelector("#theme-count"),
-  publishedCount: document.querySelector("#published-count"),
-  viewGrid: document.querySelector("#view-grid"),
-  themeList: document.querySelector("#theme-list"),
-  publishedList: document.querySelector("#published-list"),
-  filterButtons: document.querySelectorAll("[data-filter]"),
-};
-
-let radarData = fallbackData;
-
-function createElement(tag, className, text) {
-  const element = document.createElement(tag);
-  if (className) element.className = className;
-  if (text) element.textContent = text;
-  return element;
-}
-
-function renderMetrics(data) {
-  const published = data.views.filter((view) => view.published).length;
-
-  nodes.snapshotDate.textContent = data.snapshotDate;
-  nodes.viewCount.textContent = data.views.length;
-  nodes.candidateCount.textContent = data.candidates.length;
-  nodes.themeCount.textContent = data.themes.length;
-  nodes.publishedCount.textContent = published;
-}
-
-function renderViews(filter = "all") {
-  nodes.viewGrid.innerHTML = "";
-
-  const filteredViews = radarData.views.filter((view) => {
-    if (filter === "published") return view.published;
-    if (filter === "not-published") return !view.published;
-    return true;
-  });
-
-  filteredViews.forEach((view) => {
-    const card = createElement("article", "view-card");
-    const head = createElement("div", "view-card-head");
-    const id = createElement("span", "view-id", view.id);
-    const badge = createElement(
-      "span",
-      view.published ? "status-badge published" : "status-badge",
-      view.published ? "已发布" : "待可视化"
-    );
-    const title = createElement("h3", "", view.title);
-    const meta = createElement("p", "view-meta", view.theme);
-
-    head.append(id, badge);
-    card.append(head, title, meta);
-
-    if (view.published && view.url) {
-      const link = createElement("a", "view-link", "打开汇报页");
-      link.href = view.url;
-      card.append(link);
-    } else {
-      const note = createElement("p", "quiet-note", "正文保留在 MyOS，公开页暂不复制。");
-      card.append(note);
-    }
-
-    nodes.viewGrid.append(card);
-  });
-}
-
-function renderSimpleList(container, items, className) {
-  if (!container) return;
-  container.innerHTML = "";
-  items.forEach((item) => {
-    const row = createElement("div", className, item);
-    container.append(row);
-  });
-}
-
-function renderPublishedList(data) {
-  if (!nodes.publishedList) return;
-  nodes.publishedList.innerHTML = "";
-
-  data.views
-    .filter((view) => view.published && view.url)
-    .forEach((view) => {
-      const link = createElement("a", "published-row", `${view.id}｜${view.title}`);
-      link.href = view.url;
-      nodes.publishedList.append(link);
-    });
-}
-
-function setupFilters() {
-  nodes.filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      nodes.filterButtons.forEach((node) => node.classList.remove("is-active"));
-      button.classList.add("is-active");
-      renderViews(button.dataset.filter);
-    });
-  });
+  revealNodes.forEach((node) => observer.observe(node));
 }
 
 function render(data) {
   radarData = data;
-  renderMetrics(data);
+  renderMetrics();
+  renderThemes();
+  setupGraphSelect();
+  renderGraph();
   renderViews();
-  renderSimpleList(nodes.themeList, data.themes, "theme-row");
-  renderPublishedList(data);
-  setupFilters();
+  setupInteractions();
+  setupReveal();
 }
 
 fetch("./data/judgments.json")
   .then((response) => {
-    if (!response.ok) throw new Error("Failed to load radar data");
+    if (!response.ok) throw new Error("Failed to load judgment data");
     return response.json();
   })
   .then(render)
-  .catch(() => {
-    render(fallbackData);
-  });
+  .catch(() => render(fallbackData));
