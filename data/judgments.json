@@ -1,210 +1,74 @@
 {
-  "snapshotDate": "2026-08-19",
-  "source": "Obsidian / MyOS",
-  "sourcePolicy": "MyOS is the authority. This GitHub Pages site is a public visualization layer.",
+  "snapshotDate": "2026-08-23",
   "views": [
-    {
-      "id": "V001",
-      "title": "爆论的底层认知动作只有两类：归纳与推翻",
-      "status": "formal",
-      "published": false,
-      "theme": "判断形成"
-    },
-    {
-      "id": "V002",
-      "title": "AI时代真正竞争的，不是人，而是认知系统",
-      "status": "formal",
-      "published": true,
-      "url": "./v002.html",
-      "theme": "个人认知系统"
-    },
-    {
-      "id": "V003",
-      "title": "AI时代，人与人的差距正在从认知能力竞争转向系统韧性竞争",
-      "status": "formal",
-      "published": false,
-      "theme": "AI时代成长"
-    },
-    {
-      "id": "V005",
-      "title": "高洞察力与高敏感性并非同一能力",
-      "status": "formal",
-      "published": false,
-      "theme": "洞察能力"
-    },
-    {
-      "id": "V006",
-      "title": "好奇心的终点不是知识，而是判断",
-      "status": "formal",
-      "published": false,
-      "theme": "判断形成"
-    },
-    {
-      "id": "V007",
-      "title": "推翻一个不存在的共识，不是洞察",
-      "status": "formal",
-      "published": false,
-      "theme": "洞察能力"
-    },
-    {
-      "id": "V008",
-      "title": "别人听不懂，不一定是你表达不好",
-      "status": "formal",
-      "published": false,
-      "theme": "表达边界"
-    },
-    {
-      "id": "V009",
-      "title": "专家压缩知识，大师自由切换压缩与解压",
-      "status": "formal",
-      "published": false,
-      "theme": "知识表达"
-    },
-    {
-      "id": "V010",
-      "title": "知行不合一最大的障碍，不是无知，而是认知系统与行为系统属于两个不同系统",
-      "status": "formal",
-      "published": false,
-      "theme": "从正确到有效"
-    },
-    {
-      "id": "V011",
-      "title": "专家最大的沟通误区，不是讲不清，而是总想一次讲完",
-      "status": "formal",
-      "published": false,
-      "theme": "知识表达"
-    },
-    {
-      "id": "V012",
-      "title": "知识库不是产品，而是认知工厂",
-      "status": "formal",
-      "published": true,
-      "url": "./v012.html",
-      "theme": "知识系统"
-    },
-    {
-      "id": "V013",
-      "title": "AI最大的价值，不是回答问题，而是参与推理",
-      "status": "formal",
-      "published": true,
-      "url": "./v013.html",
-      "theme": "人机协同"
-    },
-    {
-      "id": "V014",
-      "title": "未成之事宜保密，未熟之见需碰撞",
-      "status": "formal",
-      "published": true,
-      "url": "./v014.html",
-      "theme": "认知资产生命周期"
-    },
-    {
-      "id": "V017",
-      "title": "高质量洞察不会终结问题，而会扩大地图",
-      "status": "formal",
-      "published": false,
-      "theme": "洞察能力"
-    },
-    {
-      "id": "V018",
-      "title": "AI时代，人的职责正在从执行者迁移为系统设计者",
-      "status": "formal",
-      "published": true,
-      "url": "./v018.html",
-      "theme": "人机协同"
-    },
-    {
-      "id": "V019",
-      "title": "AI的不可靠不是均匀分布的",
-      "status": "formal",
-      "published": true,
-      "url": "./v019.html",
-      "theme": "人机协同"
-    },
-    {
-      "id": "V020",
-      "title": "AI工具的成本问题，往往先是产品机制未被摸清的问题",
-      "status": "formal",
-      "published": false,
-      "theme": "AI工具使用"
-    },
-    {
-      "id": "V027",
-      "title": "AI-native 知识工作者的分化轴，正在从 AI 熟练度转向工作闭环控制力",
-      "status": "formal",
-      "published": true,
-      "url": "./v027.html",
-      "theme": "人机协同"
-    },
-    {
-      "id": "V028",
-      "title": "AI 扩大生成带宽之后，评价带宽更容易成为新的瓶颈",
-      "status": "formal",
-      "published": true,
-      "url": "./v028.html",
-      "theme": "人机协同"
-    },
-    {
-      "id": "V029",
-      "title": "个人 AI 效率不会自动变成组织生产力，价值还需要经过一次工作重构",
-      "status": "formal",
-      "published": true,
-      "url": "./v029.html",
-      "theme": "人机协同"
-    },
-    {
-      "id": "S001",
-      "title": "洞察不是灵光一现而是可验证的过程",
-      "status": "formal",
-      "published": false,
-      "theme": "洞察能力"
-    },
-    {
-      "id": "S002",
-      "title": "经营的原点是机会圈与能力圈的重合",
-      "status": "formal",
-      "published": false,
-      "theme": "经营判断"
-    },
-    {
-      "id": "S003",
-      "title": "问题定义优先于解决方案选择",
-      "status": "formal",
-      "published": false,
-      "theme": "问题定义"
-    },
-    {
-      "id": "S004",
-      "title": "高质量学习依赖提问而不只是阅读量",
-      "status": "formal",
-      "published": false,
-      "theme": "学习方法"
-    }
-  ],
-  "candidates": [
-    "C001 高价值判断往往始于模糊感觉，而非清晰概念",
-    "C002 认知升级是即时奖励，行为改变是延迟奖励",
-    "CJ-W23-00 AI时代的认知决策升级",
-    "CJ-W23-01 AI时代稀缺价值从信息处理转向判断与影响决策",
-    "CJ-W23-02 高质量AI协作依赖需求定义与执行分工",
-    "CJ-W23-03 个人知识管理的终点是判断链而不是资料库",
-    "CJ-W24-00 AI时代个人价值正在变成复合系统能力",
-    "CJ-W24-01 AI的马太效应来自底层能力与AI使用能力的乘法关系",
-    "CJ-W24-02 判断力的上限受健康账户约束",
-    "CJ-W24-03 语义中间层的价值取决于能否形成读写闭环",
-    "CJ001 爆论的底层认知动作只有两类：归纳与推翻",
-    "CJ002 AI时代真正竞争的不是人而是认知系统",
-    "CJ003 高价值判断往往始于模糊感觉而非清晰概念"
+    {"id":"V001","title":"爆论的底层认知动作只有两类：归纳与推翻","themeIds":["T001"],"published":false},
+    {"id":"V002","title":"AI时代真正竞争的，不是人，而是认知系统","themeIds":["T002","T003","T008"],"published":true,"url":"./v002.html"},
+    {"id":"V003","title":"AI时代，人与人的差距正在从认知能力竞争转向系统韧性竞争","themeIds":["T002","T007"],"published":false},
+    {"id":"V005","title":"高洞察力与高敏感性并非同一能力","themeIds":["T001"],"published":false},
+    {"id":"V006","title":"好奇心的终点不是知识，而是判断","themeIds":["T001"],"published":false},
+    {"id":"V007","title":"推翻一个不存在的共识，不是洞察","themeIds":["T001"],"published":false},
+    {"id":"V008","title":"别人听不懂，不一定是你表达不好","themeIds":["T004"],"published":false},
+    {"id":"V009","title":"专家压缩知识，大师自由切换压缩与解压","themeIds":["T004"],"published":false},
+    {"id":"V010","title":"知行不合一最大的障碍，不是无知，而是认知系统与行为系统属于两个不同系统","themeIds":["T005","T007"],"published":false},
+    {"id":"V011","title":"专家最大的沟通误区，不是讲不清，而是总想一次讲完","themeIds":["T005","T006"],"published":false},
+    {"id":"V012","title":"知识库不是产品，而是认知工厂","themeIds":["T001","T006","T009"],"published":true,"url":"./v012.html"},
+    {"id":"V013","title":"AI最大的价值，不是回答问题，而是参与推理","themeIds":["T001","T008"],"published":true,"url":"./v013.html"},
+    {"id":"V014","title":"未成之事宜保密，未熟之见需碰撞","themeIds":["T009"],"published":true,"url":"./v014.html"},
+    {"id":"V017","title":"高质量洞察不会终结问题，而会扩大地图","themeIds":["T001"],"published":false},
+    {"id":"V018","title":"AI时代，人的职责正在从执行者迁移为系统设计者","themeIds":["T008"],"published":true,"url":"./v018.html"},
+    {"id":"V019","title":"AI的不可靠不是均匀分布的","themeIds":["T008"],"published":true,"url":"./v019.html"},
+    {"id":"V020","title":"AI工具的成本问题，往往先是产品机制未被摸清的问题","themeIds":["T008","T009"],"published":false},
+    {"id":"V022","title":"AI时代真正不能外包的，不是任务，而是能力生成操作","themeIds":["T008"],"published":false},
+    {"id":"V023","title":"AI时代最危险的错觉，是把系统表现当成个人能力","themeIds":["T002","T008"],"published":false},
+    {"id":"V024","title":"认知主体性不是拥有正确框架，而是始终保留重开框架的能力","themeIds":["T001","T008"],"published":false},
+    {"id":"V025","title":"术语的压缩效率，取决于双方共享模型的重叠程度","themeIds":["T004"],"published":false},
+    {"id":"V026","title":"概念密度不等于认知增量，复杂度必须产生新的约束","themeIds":["T001"],"published":false},
+    {"id":"V027","title":"AI-native 知识工作者的分化轴，正在从 AI 熟练度转向工作闭环控制力","themeIds":["T008"],"published":true,"url":"./v027.html"},
+    {"id":"V028","title":"AI 扩大生成带宽之后，评价带宽更容易成为新的瓶颈","themeIds":["T008"],"published":true,"url":"./v028.html"},
+    {"id":"V029","title":"个人 AI 效率不会自动变成组织生产力，价值还需要经过一次工作重构","themeIds":["T008"],"published":true,"url":"./v029.html"}
   ],
   "themes": [
-    "T001 判断是如何形成的",
-    "T002 AI时代的人应该如何成长",
-    "T003 个人认知系统",
-    "T004 AI时代的认知带宽差异",
-    "T005 自我改造能力",
-    "T006 洞察如何产生影响力",
-    "T007 从正确到有效",
-    "T008 人机协同能力",
-    "T009 认知资产的生命周期"
+    {"id":"T001","name":"判断是如何形成的","question":"人如何把复杂世界压缩成一个可以下注的判断？","color":"#b45309"},
+    {"id":"T002","name":"AI时代的人应该如何成长","question":"认知能力、系统韧性与人机共进化，哪个更决定长期差距？","color":"#2563eb"},
+    {"id":"T003","name":"个人认知系统","question":"个人优势如何进入稳定的观点生产系统？","color":"#7c3aed"},
+    {"id":"T004","name":"AI时代的认知带宽差异","question":"判断如何被压缩、展开，并让不同认知层级的人接住？","color":"#0891b2"},
+    {"id":"T005","name":"自我改造能力","question":"为什么看见问题的人很多，真正完成改变的人很少？","color":"#dc2626"},
+    {"id":"T006","name":"洞察如何产生影响力","question":"洞察如何进入传播网络，并真正改变人或组织？","color":"#16a34a"},
+    {"id":"T007","name":"从正确到有效","question":"为什么认知正确，不等于现实成功？","color":"#ea580c"},
+    {"id":"T008","name":"人机协同能力","question":"如何提升系统表现，同时保护人的关键能力与判断责任？","color":"#4f46e5"},
+    {"id":"T009","name":"认知资产的生命周期","question":"一个判断从萌芽到影响力，应该经历哪些阶段？","color":"#0f766e"}
+  ],
+  "themeConnections": [
+    {"source":"T001","target":"T004","label":"生成 → 传递"},
+    {"source":"T004","target":"T006","label":"接住 → 影响"},
+    {"source":"T006","target":"T005","label":"影响 → 改变"},
+    {"source":"T005","target":"T007","label":"改变 → 有效"},
+    {"source":"T002","target":"T003","label":"成长 → 个体系统"},
+    {"source":"T002","target":"T008","label":"成长 → 协同"},
+    {"source":"T001","target":"T008","label":"判断 → 放大"},
+    {"source":"T006","target":"T009","label":"传播 → 生命周期"}
+  ],
+  "judgmentConnections": [
+    {"source":"V001","target":"V007","label":"深化"},
+    {"source":"V007","target":"V026","label":"质量约束"},
+    {"source":"V006","target":"V017","label":"递进"},
+    {"source":"V008","target":"V009","label":"问题与能力"},
+    {"source":"V009","target":"V025","label":"深化"},
+    {"source":"V025","target":"V011","label":"沟通应用"},
+    {"source":"V012","target":"V013","label":"生产与推理"},
+    {"source":"V012","target":"V014","label":"生命周期"},
+    {"source":"V013","target":"V018","label":"角色互补"},
+    {"source":"V002","target":"V003","label":"系统韧性"},
+    {"source":"V002","target":"V018","label":"系统角色"},
+    {"source":"V003","target":"V010","label":"从理解到改变"},
+    {"source":"V018","target":"V019","label":"可靠性边界"},
+    {"source":"V019","target":"V020","label":"工具机制"},
+    {"source":"V018","target":"V022","label":"能力边界"},
+    {"source":"V022","target":"V023","label":"风险识别"},
+    {"source":"V022","target":"V024","label":"主体性"},
+    {"source":"V027","target":"V028","label":"评价瓶颈"},
+    {"source":"V027","target":"V029","label":"现实转化"},
+    {"source":"V023","target":"V028","label":"评价保护"},
+    {"source":"V026","target":"V028","label":"有效复杂度"}
   ]
 }
