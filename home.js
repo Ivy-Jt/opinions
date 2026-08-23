@@ -39,6 +39,20 @@ const themeLayout = {
   T002: [135, 455],
 };
 
+const mobileThemeLayout = {
+  T001: [210, 60],
+  T004: [210, 170],
+  T006: [210, 280],
+  T005: [210, 390],
+  T007: [210, 500],
+  T002: [70, 60],
+  T003: [70, 170],
+  T008: [70, 390],
+  T009: [350, 390],
+};
+
+const mobileGraphMedia = window.matchMedia("(max-width: 680px)");
+
 let radarData = fallbackData;
 let graphMode = "themes";
 let selectedThemeId = "T001";
@@ -152,6 +166,18 @@ function addGraphDefinitions() {
   nodes.graph.append(defs);
 }
 
+function configureGraph(width, height, titleText, descriptionText) {
+  nodes.graph.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  nodes.graph.setAttribute("width", String(width));
+  nodes.graph.setAttribute("height", String(height));
+
+  const title = createSvg("title", { id: "graph-title" });
+  title.textContent = titleText;
+  const description = createSvg("desc", { id: "graph-desc" });
+  description.textContent = descriptionText;
+  nodes.graph.append(title, description);
+}
+
 function appendEdge(source, target, label, curved = false) {
   const [sx, sy] = source;
   const [tx, ty] = target;
@@ -222,16 +248,24 @@ function showViewInspector(view) {
 }
 
 function renderThemeGraph() {
+  const compact = mobileGraphMedia.matches;
+  const layout = compact ? mobileThemeLayout : themeLayout;
+  configureGraph(
+    compact ? 420 : 1120,
+    compact ? 560 : 680,
+    "九个判断主题的关系图",
+    "展示判断生成、传递、影响、改变与人机协同等主题之间的连接。"
+  );
   nodes.graphCaption.textContent = "九个主题不是平铺目录，而是从判断生成、传递、影响到现实转化的连续问题。";
 
   radarData.themeConnections.forEach((edge) => {
-    const source = themeLayout[edge.source];
-    const target = themeLayout[edge.target];
+    const source = layout[edge.source];
+    const target = layout[edge.target];
     if (source && target) appendEdge(source, target, edge.label, true);
   });
 
   radarData.themes.forEach((theme) => {
-    const [x, y] = themeLayout[theme.id];
+    const [x, y] = layout[theme.id];
     const count = getThemeViews(theme.id).length;
     const group = createSvg("g", {
       class: `theme-node${theme.id === selectedThemeId ? " is-selected" : ""}`,
@@ -241,12 +275,33 @@ function renderThemeGraph() {
     group.dataset.nodeId = theme.id;
     group.style.setProperty("--node-color", theme.color);
 
-    group.append(createSvg("rect", { x: "-78", y: "-38", width: "156", height: "76", rx: "8" }));
-    const idText = createSvg("text", { class: "theme-node-id", y: "-9", "text-anchor": "middle" });
+    group.append(
+      createSvg("rect", {
+        x: compact ? "-60" : "-78",
+        y: compact ? "-30" : "-38",
+        width: compact ? "120" : "156",
+        height: compact ? "60" : "76",
+        rx: "8",
+      })
+    );
+    const idText = createSvg("text", {
+      class: "theme-node-id",
+      y: compact ? "-7" : "-9",
+      "text-anchor": "middle",
+    });
     idText.textContent = theme.id;
-    const nameText = createSvg("text", { class: "theme-node-name", y: "13", "text-anchor": "middle" });
-    nameText.textContent = theme.name.length > 12 ? `${theme.name.slice(0, 12)}…` : theme.name;
-    const countText = createSvg("text", { class: "theme-node-count", y: "31", "text-anchor": "middle" });
+    const nameText = createSvg("text", {
+      class: "theme-node-name",
+      y: compact ? "11" : "13",
+      "text-anchor": "middle",
+    });
+    const nameLimit = compact ? 11 : 12;
+    nameText.textContent = theme.name.length > nameLimit ? `${theme.name.slice(0, nameLimit)}…` : theme.name;
+    const countText = createSvg("text", {
+      class: "theme-node-count",
+      y: compact ? "25" : "31",
+      "text-anchor": "middle",
+    });
     countText.textContent = `${count} 条判断`;
     const tooltip = createSvg("title");
     tooltip.textContent = `${theme.id}｜${theme.name}\n${theme.question}`;
@@ -261,6 +316,26 @@ function renderThemeGraph() {
 }
 
 function judgmentLayout(views) {
+  if (mobileGraphMedia.matches) {
+    const positions = {};
+    const center = [210, 78];
+    const startY = 205;
+    const rowGap = 92;
+    const rows = Math.ceil(views.length / 2);
+
+    views.forEach((view, index) => {
+      const isLastOdd = views.length % 2 === 1 && index === views.length - 1;
+      positions[view.id] = [isLastOdd ? 210 : index % 2 === 0 ? 90 : 330, startY + Math.floor(index / 2) * rowGap];
+    });
+
+    return {
+      positions,
+      center,
+      width: 420,
+      height: Math.max(430, startY + Math.max(0, rows - 1) * rowGap + 62),
+    };
+  }
+
   const positions = {};
   const center = [560, 330];
   const radiusX = views.length > 8 ? 430 : 360;
@@ -273,14 +348,22 @@ function judgmentLayout(views) {
       center[1] + Math.sin(angle) * radiusY,
     ];
   });
-  return { positions, center };
+  return { positions, center, width: 1120, height: 680 };
 }
 
 function renderJudgmentGraph() {
   const theme = getTheme(selectedThemeId) || radarData.themes[0];
   const views = getThemeViews(theme.id);
-  const { positions, center } = judgmentLayout(views);
+  const compact = mobileGraphMedia.matches;
+  const { positions, center, width, height } = judgmentLayout(views);
   const viewIds = new Set(views.map((view) => view.id));
+
+  configureGraph(
+    width,
+    height,
+    `${theme.id} ${theme.name}的观点关系图`,
+    `展示${theme.name}主题与${views.length}条成熟判断之间的关系。`
+  );
 
   nodes.graphCaption.textContent = `${theme.id}｜${theme.name}：${theme.question}`;
 
@@ -294,11 +377,12 @@ function renderJudgmentGraph() {
     transform: `translate(${center[0]} ${center[1]})`,
   });
   themeGroup.style.setProperty("--node-color", theme.color);
-  themeGroup.append(createSvg("circle", { r: "66" }));
+  themeGroup.append(createSvg("circle", { r: compact ? "50" : "66" }));
   const themeId = createSvg("text", { y: "-7", "text-anchor": "middle" });
   themeId.textContent = theme.id;
   const themeName = createSvg("text", { class: "hub-name", y: "17", "text-anchor": "middle" });
-  themeName.textContent = theme.name.length > 10 ? `${theme.name.slice(0, 10)}…` : theme.name;
+  const themeNameLimit = compact ? 8 : 10;
+  themeName.textContent = theme.name.length > themeNameLimit ? `${theme.name.slice(0, themeNameLimit)}…` : theme.name;
   themeGroup.append(themeId, themeName);
   makeInteractive(themeGroup, () => showThemeInspector(theme));
   nodes.graph.append(themeGroup);
@@ -311,10 +395,27 @@ function renderJudgmentGraph() {
       "aria-label": `${view.id} ${view.title}`,
     });
     group.style.setProperty("--node-color", theme.color);
-    group.append(createSvg("rect", { x: "-64", y: "-27", width: "128", height: "54", rx: "8" }));
-    const idText = createSvg("text", { y: "5", "text-anchor": "middle" });
+    group.append(
+      createSvg("rect", {
+        x: compact ? "-56" : "-64",
+        y: compact ? "-24" : "-27",
+        width: compact ? "112" : "128",
+        height: compact ? "48" : "54",
+        rx: "8",
+      })
+    );
+    const idText = createSvg("text", { y: compact ? "4" : "5", "text-anchor": "middle" });
     idText.textContent = view.id;
-    if (view.published) group.append(createSvg("circle", { class: "page-dot", cx: "50", cy: "-15", r: "4" }));
+    if (view.published) {
+      group.append(
+        createSvg("circle", {
+          class: "page-dot",
+          cx: compact ? "44" : "50",
+          cy: compact ? "-13" : "-15",
+          r: compact ? "3.5" : "4",
+        })
+      );
+    }
     const tooltip = createSvg("title");
     tooltip.textContent = `${view.id}｜${view.title}`;
     group.append(idText, tooltip);
@@ -332,6 +433,7 @@ function renderJudgmentGraph() {
 
 function renderGraph() {
   nodes.graph.innerHTML = "";
+  nodes.graph.dataset.mode = graphMode;
   addGraphDefinitions();
   if (!radarData.themes.length) {
     nodes.graphCaption.textContent = "图谱数据暂未加载。";
@@ -415,6 +517,7 @@ function setupInteractions() {
     document.querySelectorAll(".theme-card").forEach((card) => card.classList.remove("is-selected"));
     renderViews();
   });
+  mobileGraphMedia.addEventListener("change", () => renderGraph());
 }
 
 function setupReveal() {
