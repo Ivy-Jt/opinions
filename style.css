@@ -1276,3 +1276,203 @@ blockquote,
   }
 
 }
+
+@media (max-width: 560px) {
+  .page {
+    width: min(calc(100% - 16px), var(--max));
+    padding: 8px 0 32px;
+  }
+
+  .site-nav {
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 8px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .site-brand {
+    flex: 0 0 auto;
+    font-size: 0.72rem;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .site-nav-links {
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    gap: 4px;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .site-nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-link {
+    flex: 0 0 auto;
+    min-height: 32px;
+    padding: 6px 9px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+  }
+
+  .hero {
+    gap: 8px;
+  }
+
+  .hero-copy,
+  .summary-card,
+  .panel,
+  .process-board {
+    border-radius: 8px;
+  }
+
+  .hero-copy {
+    padding: 16px;
+  }
+
+  .eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-kicker {
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .hero-kicker span {
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+  }
+
+  .hero-copy h1 {
+    margin: 12px 0;
+    font-size: 1.95rem;
+    line-height: 1.12;
+    letter-spacing: 0;
+  }
+
+  .hero-note,
+  .section-head p,
+  .summary-card p,
+  .summary-card li,
+  .stage-copy p,
+  .stage-copy li,
+  .panel p,
+  .panel li,
+  blockquote,
+  .diagram-head p {
+    font-size: 0.88rem;
+    line-height: 1.62;
+  }
+
+  .hero-path {
+    gap: 6px;
+    margin-top: 16px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .hero-path span {
+    font-size: 0.78rem;
+  }
+
+  .hero-diagram {
+    margin-top: 14px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .diagram-head {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .diagram-head p {
+    font-size: 0.78rem;
+  }
+
+  .diagram-shell {
+    padding: 4px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .diagram-shell svg {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .loop-node text {
+    font-size: 24px;
+  }
+
+  .loop-node .node-sub {
+    font-size: 14px;
+  }
+
+  .summary-card {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .summary-block,
+  .panel {
+    padding: 14px;
+    border-radius: 8px;
+  }
+
+  .section {
+    margin-top: 16px;
+  }
+
+  .section-head {
+    padding: 0 2px 8px;
+  }
+
+  .section-head h2 {
+    margin: 6px 0 8px;
+    font-size: 1.45rem;
+    line-height: 1.18;
+    letter-spacing: 0;
+  }
+
+  .process-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .process-pill {
+    min-width: 0;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .process-stage {
+    border-radius: 8px;
+  }
+
+  .stage-panel {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .stage-meta {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .stage-index {
+    font-size: 2.4rem;
+  }
+}
